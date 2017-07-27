@@ -6,7 +6,7 @@ README
 ### E-mail:dev_zwy@aliyun.com
 ****
 ## 目录
-* [优雅的日志输出(突破系统日志打印长度的限制,自动校验Json串输出格式)](https://github.com/devzwy/KUtils/raw/master/README#优雅的日志输出(突破系统日志打印长度的限制,自动校验Json串输出格式))
+* [优雅的日志输出(突破系统日志打印长度的限制,自动校验Json串输出格式)](https://github.com/devzwy/KUtils/README#优雅的日志输出(突破系统日志打印长度的限制,自动校验Json串输出格式))
 * [在项目中集成KUtils](##在项目中集成KUtils)
 
 
@@ -16,8 +16,7 @@ README
 
 
 https://github.com/guodongxiaren/README#横线
-
-https://github.com/devzwy/KUtils#优雅的日志输出(突破系统日志打印长度的限制,自动校验Json串输出格式)
+https://github.com/devzwy/KUtils/raw/master/README#优雅的日志输出(突破系统日志打印长度的限制,自动校验Json串输出格式)
 
 
 

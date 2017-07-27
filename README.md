@@ -19,23 +19,22 @@ README
 - [x] 打印异常输出位置（精确到行）
 - [x] 日志一目了然  
 
- 使用:
-```diff
-+ 在application中初始化操作（注意：不初始化直接调用Log输出日志会有空指针异常抛出）：
- 
- Log.init(TAG, true);//开启日志打印
-  
-+ 调用和系统Log调用一样
+### 使用
+#### 1.在application中初始化操作（注意：不初始化直接调用Log输出日志会有空指针异常抛出）
+    ```xml
+    Log.init(TAG, true);//开启日志打印
+    ```
+#### 2.调用和系统Log调用一样 
+  ```xml
   private String json = "{\"key_a\":999,\"key_b\":\"这是b的值\"}";
-  private String text = "这是一条测试日志";
-    Log.d(json);
-    Log.e(json);
-    Log.w(json);  
-    Log.d(text);
-    Log.e(text);
-    Log.w(text);
-
-```
+    private String text = "这是一条测试日志";
+      Log.d(json);
+      Log.e(json);
+      Log.w(json);  
+      Log.d(text);
+      Log.e(text);
+      Log.w(text);
+  ```
  输出效果图  
  ![log](https://github.com/devzwy/KUtils/raw/master/images/loginfo.png)  
 ## 引导页集成

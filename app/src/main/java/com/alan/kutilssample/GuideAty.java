@@ -46,8 +46,8 @@ public class GuideAty extends Activity {
 
     private void setData() {
         //开启自动播放
-        mBannerGuideBackground.setAutoPlayAble(true);
-        mBannerGuideForeground.setAutoPlayAble(true);
+//        mBannerGuideBackground.setAutoPlayAble(true);
+//        mBannerGuideForeground.setAutoPlayAble(true);
 
         //设置背景图
         mBannerGuideBackground.setData(R.mipmap.uoko_guide_background_1, R.mipmap.uoko_guide_background_2, R.mipmap.uoko_guide_background_3);

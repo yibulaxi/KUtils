@@ -7,7 +7,7 @@ README
 ****
 ## 目录
 * [日志输出](#日志输出)
-* [项目中集成KUtils](#项目中集成KUtils)
+* [集成KUtils](#集成KUtils)
 
 
 
@@ -72,7 +72,7 @@ README
  输出效果图  
  ![baidu](https://github.com/devzwy/KUtils/raw/master/images/loginfo.png)  
  
-### 项目中集成KUtils
+### 集成KUtils
 -----------
 ```diff
 + 方式1   预留jcenter仓库方式  

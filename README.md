@@ -38,16 +38,15 @@ README
  Log.init(TAG, true);//开启日志打印
  ```
  调用和系统Log调用一样
- ```
+ ```Java
   private String json = "{\"key_a\":999,\"key_b\":\"这是b的值\"}";
-     private String text = "这是一条测试日志";
-Log.d(json);
-Log.e(json);
-Log.w(json);  
-
-Log.d(text);
-Log.e(text);
-Log.w(text);
+  private String text = "这是一条测试日志";
+    Log.d(json);
+    Log.e(json);
+    Log.w(json);  
+    Log.d(text);
+    Log.e(text);
+    Log.w(text);
  ```
  输出效果图  
  ![baidu](https://github.com/devzwy/KUtils/raw/master/images/loginfo.png)

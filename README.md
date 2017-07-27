@@ -51,11 +51,18 @@ README
 - [x] 自动校验Json串输出格式
 - [x] 日志一目了然  
 
- 在application中初始化操作（注意：不初始化直接调用Log输出日志会有空指针异常抛出）：
+ 使用:
+ ```diff
+ + 在application中初始化操作（注意：不初始化直接调用Log输出日志会有空指针异常抛出）：
  ```
+ 
+ ```Java
  Log.init(TAG, true);//开启日志打印
  ```
- 调用和系统Log调用一样
+ 
+  ```diff
+  + 调用和系统Log调用一样
+  ```
  ```Java
   private String json = "{\"key_a\":999,\"key_b\":\"这是b的值\"}";
   private String text = "这是一条测试日志";

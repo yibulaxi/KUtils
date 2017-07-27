@@ -13,9 +13,10 @@ import com.zwy.kutils.utils.Log;
  * ================================================================
  */
 public class App extends Application {
+    public final String TAG = "KUtilsSample";
     @Override
     public void onCreate() {
         super.onCreate();
-        Log.init("KUtilsSample", true);
+        Log.init(TAG, true);//开启日志打印
     }
 }

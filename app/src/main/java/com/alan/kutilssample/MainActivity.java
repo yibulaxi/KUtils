@@ -7,7 +7,7 @@ import com.zwy.kutils.utils.Log;
 
 public class MainActivity extends AppCompatActivity {
     private String json = "{\"key_a\":999,\"key_b\":\"这是b的值\"}";
-    private String content = "这是一条测试日志";
+    private String text = "这是一条测试日志";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,9 +18,9 @@ public class MainActivity extends AppCompatActivity {
         Log.e(json);
         Log.w(json);
 
-        Log.d(content);
-        Log.e(content);
-        Log.w(content);
+        Log.d(text);
+        Log.e(text);
+        Log.w(text);
 
     }
 }

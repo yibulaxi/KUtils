@@ -1,12 +1,12 @@
-package com.zwy.kutils.utils.base.klog;
+package com.zwy.kutils.utils.baselog;
 
 import android.text.TextUtils;
 import android.util.Log;
 
-import static com.zwy.kutils.utils.base.klog.KLog.D;
-import static com.zwy.kutils.utils.base.klog.KLog.E;
-import static com.zwy.kutils.utils.base.klog.KLog.I;
-import static com.zwy.kutils.utils.base.klog.KLog.W;
+import static com.zwy.kutils.utils.baselog.KLog.D;
+import static com.zwy.kutils.utils.baselog.KLog.E;
+import static com.zwy.kutils.utils.baselog.KLog.I;
+import static com.zwy.kutils.utils.baselog.KLog.W;
 
 
 /**

@@ -1,4 +1,4 @@
-package com.zwy.kutils.utils.base.klog;
+package com.zwy.kutils.utils.baselog;
 
 
 import android.support.annotation.Nullable;

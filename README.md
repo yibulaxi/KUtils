@@ -37,7 +37,7 @@ README
 
 ```
  输出效果图  
- ![baidu](https://github.com/devzwy/KUtils/raw/master/images/loginfo.png)  
+ ![log](https://github.com/devzwy/KUtils/raw/master/images/loginfo.png)  
 ### 引导页集成
 -----------
 - [x] 引导界面导航效果
@@ -51,6 +51,51 @@ README
 - [x] 加载网络数据时支持占位图设置，避免出现整个广告条空白的情况
 - [x] 多个 ViewPager 跟随滚动
 
+使用：
+```diff
++ 实现demo中的效果（两层引导页 第一层为图片 第二层为文字描述）
+ <com.zwy.kutils.widget.guide.BGAGuideLinkageLayout style="@style/MatchMatch">
+
+        <com.zwy.kutils.widget.guide.BGABanner
+            android:id="@+id/banner_guide_background"
+            style="@style/MatchMatch"
+            app:banner_pageChangeDuration="1000"
+            app:banner_pointAutoPlayAble="false"
+            app:banner_pointContainerBackground="@android:color/transparent"
+            app:banner_pointDrawable="@drawable/bga_banner_selector_point_hollow"
+            app:banner_pointTopBottomMargin="15dp"
+            app:banner_transitionEffect="fade"/>
+
+        <com.zwy.kutils.widget.guide.BGABanner
+            android:id="@+id/banner_guide_foreground"
+            style="@style/MatchMatch"
+            app:banner_pageChangeDuration="1000"
+            app:banner_pointAutoPlayAble="false"
+            app:banner_pointContainerBackground="@android:color/transparent"
+            app:banner_pointDrawable="@drawable/bga_banner_selector_point_hollow"
+            app:banner_pointTopBottomMargin="15dp"
+            app:banner_transitionEffect="alpha"/>
+
+    </com.zwy.kutils.widget.guide.BGAGuideLinkageLayout>
++  //将跳过按钮与进入按钮加入控制器设置点击事件
+          mBannerGuideForeground.setEnterSkipViewIdAndDelegate(R.id.btn_guide_enter, R.id.tv_guide_skip, new BGABanner.GuideDelegate() {
+              @Override
+              public void onClickEnterOrSkip() {
+                  startActivity(new Intent(GuideAty.this, MainActivity.class));
+                  finish();
+              }
+          });
+          //开启自动播放
+          mBannerGuideBackground.setAutoPlayAble(true);
+          mBannerGuideForeground.setAutoPlayAble(true);
+          
+          //设置背景图
+          mBannerGuideBackground.setData(R.mipmap.uoko_guide_background_1, R.mipmap.uoko_guide_background_2, R.mipmap.uoko_guide_background_3);
+          //设置背景图对应的文案
+          mBannerGuideForeground.setData(R.mipmap.uoko_guide_foreground_1, R.mipmap.uoko_guide_foreground_2, R.mipmap.uoko_guide_foreground_3);
+```
+ 效果图(gif图加载慢，请耐心等候)  
+ ![log](https://github.com/devzwy/KUtils/raw/master/images/loginfo.png)  
 
 
 

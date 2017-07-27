@@ -32,7 +32,6 @@ README
 
 
 ### Log打印
- ------
  在application中初始化操作（注意：不初始化直接调用Log输出日志会有空指针异常抛出）：
  ```
  Log.init(TAG, true);//开启日志打印

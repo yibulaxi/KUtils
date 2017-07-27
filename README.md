@@ -289,4 +289,4 @@ compile(name: 'kutils-1.2.0', ext: 'aar')
 ****
 集成过程出现问题可联系本人QQ：3648415(注明来自github)
 ****
-|`[回到顶部](#readme)`|[回到顶部](#readme)|
+[点我回到顶部](#readme)

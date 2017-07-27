@@ -21,20 +21,22 @@ README
 
 ### 使用
 #### 1.在application中初始化操作（注意：不初始化直接调用Log输出日志会有空指针异常抛出）
-    ```xml
+
+```xml
     Log.init(TAG, true);//开启日志打印
-    ```
+```
+
 #### 2.调用和系统Log调用一样 
-  ```xml
+```xml
   private String json = "{\"key_a\":999,\"key_b\":\"这是b的值\"}";
-    private String text = "这是一条测试日志";
+  private String text = "这是一条测试日志";
       Log.d(json);
       Log.e(json);
       Log.w(json);  
       Log.d(text);
       Log.e(text);
       Log.w(text);
-  ```
+```
  输出效果图  
  ![log](https://github.com/devzwy/KUtils/raw/master/images/loginfo.png)  
 ## 引导页集成

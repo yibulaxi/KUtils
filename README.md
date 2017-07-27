@@ -277,13 +277,13 @@ new ActionSheetDialog(mContext)
 compile project(':kutils')
 ```
 #### 3.aar方式依赖
-##### 在项目根目录下新建aars文件夹，将kutils目录build/outputs下的kutils-1.2.0.aar文件copy进aars文件夹  在app的build.gradle 最外层节点加入
+##### 在项目根目录下新建aars文件夹，将kutils目录build/outputs下的kutils-release.aar文件copy进aars文件夹  在app的build.gradle 最外层节点加入
 ```xml
 repositories { flatDir { dirs '../aars' } }
 ```
 #####   在dependencies节点下加入对aar的依赖
 ```xml
-compile(name: 'kutils-1.2.0', ext: 'aar') 
+compile(name: 'kutils-release', ext: 'aar') 
 ```
     
 ****

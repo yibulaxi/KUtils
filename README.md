@@ -6,7 +6,7 @@ README
 ### E-mail:dev_zwy@aliyun.com
 ****
 ## 目录
-* [Log打印](#Log打印)
+* [打印](#打印)
 * [在项目中集成KUtils](##在项目中集成KUtils)
 
 
@@ -44,7 +44,7 @@ README
 
 
 
-### Log打印
+### 打印
 -----------
 
  在application中初始化操作（注意：不初始化直接调用Log输出日志会有空指针异常抛出）：

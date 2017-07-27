@@ -207,8 +207,51 @@ mContentBanner.setEnterSkipViewIdAndDelegate(R.id.btn_guide_enter, R.id.tv_guide
 
 ## 对话框进度条封装
 ------------------
-### 如需使用进度条对话框等，请直接通过DialogUIUtils调用静态方法
+### 如下为简单示例 其他效果请自行拓展
+#### 1. 展示进度条
+```Java
+ DialogUIUtils.showLoadingHorizontal(mContext, "请稍后……", true, false, true).show();
+```
+#### 效果图  
+![log](https://github.com/devzwy/KUtils/raw/master/images/dialog_1.png)  
+#### 2. 展示仿iOS对话框(中间)
+```Java
+ DialogUIUtils.showTwoButtonAlertDialog(mContext, "提示", "是否进入主页", "取消", new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
 
+                }
+            }, "进入", new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    readyGoThenKill(MainActivity.class);
+                }
+            }, false);
+```
+#### 效果图  
+![log](https://github.com/devzwy/KUtils/raw/master/images/dialog_2.png)  
+#### 3. 展示仿iOS对话框(底部)
+```Java
+new ActionSheetDialog(mContext)
+                    .builder()
+                    .setCancelable(false)
+                    .setCanceledOnTouchOutside(false)
+                    .setTitle("提示")
+                    .addSheetItem("删除", ActionSheetDialog.SheetItemColor.Red, new ActionSheetDialog.OnSheetItemClickListener() {
+                        @Override
+                        public void onClick(int which) {
+
+                        }
+                    })
+                    .addSheetItem("进入", ActionSheetDialog.SheetItemColor.Blue, new ActionSheetDialog.OnSheetItemClickListener() {
+                        @Override
+                        public void onClick(int which) {
+                            readyGoThenKill(MainActivity.class);
+                        }
+                    }).show();
+```
+#### 效果图  
+![log](https://github.com/devzwy/KUtils/raw/master/images/dialog_3.png)  
 ## Activity基类封装
 --------------------
 ### 使用请参考demo，请继承自BaseActivity自行拓展

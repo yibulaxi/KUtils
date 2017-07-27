@@ -1,10 +1,14 @@
 package com.alan.kutilssample;
 
-import android.content.Intent;
+import android.app.Dialog;
 import android.os.Bundle;
+import android.view.View;
 
-import com.zwy.kutils.widget.baseview.BaseActivity;
 import com.zwy.kutils.widget.guide.BGABanner;
+import com.zwy.kutils.widget.loadingdialog.DialogUIUtils;
+import com.zwy.kutils.widget.loadingdialog.alertdialog.ActionSheetDialog;
+
+import java.util.Random;
 
 import butterknife.Bind;
 
@@ -21,6 +25,7 @@ public class GuideAty extends MyBaseActivity {
     BGABanner mBannerGuideBackground;
     @Bind(R.id.banner_guide_foreground)
     BGABanner mBannerGuideForeground;
+    private Dialog dialog;
 
     /**
      * 是否需要沉浸式状态栏 不需要时返回null即可
@@ -76,11 +81,62 @@ public class GuideAty extends MyBaseActivity {
         mBannerGuideForeground.setEnterSkipViewIdAndDelegate(R.id.btn_guide_enter, R.id.tv_guide_skip, new BGABanner.GuideDelegate() {
             @Override
             public void onClickEnterOrSkip() {
-                showToast("你好");
-                startActivity(new Intent(GuideAty.this, MainActivity.class));
-                finish();
+                dialog = DialogUIUtils.showLoadingHorizontal(mContext, "请稍后……", true, false, true).show();
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            Thread.sleep(1000);
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    if (dialog.isShowing()) {
+                                        dialog.dismiss();
+                                        showDialog(new Random().nextBoolean());
+                                    }
+                                }
+                            });
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }).start();
             }
         });
+    }
+
+    private void showDialog(boolean b) {
+        if (b) {
+            DialogUIUtils.showTwoButtonAlertDialog(mContext, "提示", "是否进入主页", "取消", new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                }
+            }, "进入", new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    readyGoThenKill(MainActivity.class);
+                }
+            }, false);
+        } else {
+            new ActionSheetDialog(mContext)
+                    .builder()
+                    .setCancelable(false)
+                    .setCanceledOnTouchOutside(false)
+                    .setTitle("提示")
+                    .addSheetItem("删除", ActionSheetDialog.SheetItemColor.Red, new ActionSheetDialog.OnSheetItemClickListener() {
+                        @Override
+                        public void onClick(int which) {
+
+                        }
+                    })
+                    .addSheetItem("进入", ActionSheetDialog.SheetItemColor.Blue, new ActionSheetDialog.OnSheetItemClickListener() {
+                        @Override
+                        public void onClick(int which) {
+                            readyGoThenKill(MainActivity.class);
+                        }
+                    }).show();
+        }
     }
 
     private void setData() {

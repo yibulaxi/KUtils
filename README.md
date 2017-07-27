@@ -7,7 +7,7 @@ README
 ****
 ## 目录
  - [优雅的日志输出(突破系统日志打印长度的限制,自动校验Json串输出格式)](#Log打印)
-
+- [在项目中集成KUtils](#集成KUtils)
 
 
 
@@ -48,4 +48,26 @@ README
     Log.w(text);
  ```
  输出效果图  
- ![baidu](https://github.com/devzwy/KUtils/raw/master/images/loginfo.png)
+ ![baidu](https://github.com/devzwy/KUtils/raw/master/images/loginfo.png)  
+ ### 集成KUtils
+ - 方式1   预留jcenter仓库方式  
+ ```
+    预留
+ ```
+ - 方式2   clone项目到本地，将kutils库直接依赖到项目。
+ ```
+     compile project(':kutils')
+ ```
+ - 方式3    在项目根目录下新建aars文件夹，将kutils目录build/outputs下的kutils-1.2.0.aar文件copy进aars文件夹  
+ 在app的build.gradle 最外层节点加入
+ ```Java
+    repositories { flatDir { dirs '../aars' } }
+ ```
+ 在dependencies节点下加入对aar的依赖
+ ```Java
+    compile(name: 'kutils-1.2.0', ext: 'aar')
+ ```
+ ****
+ 集成过程出现问题可联系本人QQ：3648415(注明来自github)
+ ****
+ 

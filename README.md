@@ -6,8 +6,8 @@ README
 ### E-mail:dev_zwy@aliyun.com
 ****
 ## 目录
-* [日志输出](#优雅的日志输出(突破系统日志打印长度的限制,自动校验Json串输出格式))
-* [在项目中集成KUtils](##在项目中集成KUtils)
+* [日志输出](#日志输出)
+* [集成KUtils](#集成KUtils)
 
 
 
@@ -68,7 +68,7 @@ README
  ```
  输出效果图  
  ![baidu](https://github.com/devzwy/KUtils/raw/master/images/loginfo.png)  
-### 在项目中集成KUtils
+### 集成KUtils
 -----------
  - 方式1   预留jcenter仓库方式  
  ```

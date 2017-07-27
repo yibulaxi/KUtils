@@ -73,17 +73,13 @@ README
  
 ### 集成KUtils
 -----------
- - 方式1   预留jcenter仓库方式  
- ```Java
+```diff
++ 方式1   预留jcenter仓库方式  
     预留
- ```
- - 方式2   clone项目到本地，将kutils库直接依赖到项目。
- ```
++ 方式2   clone项目到本地，将kutils库直接依赖到项目。
      compile project(':kutils')
- ```
- - 方式3    在项目根目录下新建aars文件夹，将kutils目录build/outputs下的kutils-1.2.0.aar文件copy进aars文件夹  
++ 方式3    在项目根目录下新建aars文件夹，将kutils目录build/outputs下的kutils-1.2.0.aar文件copy进aars文件夹  
  在app的build.gradle 最外层节点加入
- ```Java
     repositories { flatDir { dirs '../aars' } }
  ```
  在dependencies节点下加入对aar的依赖

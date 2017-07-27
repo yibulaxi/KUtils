@@ -37,7 +37,7 @@ README
       Log.e(text);
       Log.w(text);
 ```
- 输出效果图  
+#### 效果图  
  ![log](https://github.com/devzwy/KUtils/raw/master/images/loginfo.png)  
 ## 引导页集成
 -----------
@@ -193,7 +193,8 @@ mContentBanner.setEnterSkipViewIdAndDelegate(R.id.btn_guide_enter, R.id.tv_guide
     <attr name="banner_contentBottomMargin" format="dimension"/>
 </declare-styleable>
 ```
-
+#### 效果图  
+![log](https://github.com/devzwy/KUtils/raw/master/images/guide.gif)  
 
 
 

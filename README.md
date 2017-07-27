@@ -270,15 +270,22 @@ new ActionSheetDialog(mContext)
 
 ## 集成该库
 -----------
-```diff
-+ 方式1   预留jcenter仓库方式  
-    预留
-+ 方式2   clone项目到本地，将kutils库直接依赖到项目。
-    compile project(':kutils')
-+ 方式3   在项目根目录下新建aars文件夹，将kutils目录build/outputs下的kutils-1.2.0.aar文件copy进aars文件夹  在app的build.gradle 最外层节点加入
-    repositories { flatDir { dirs '../aars' } }
-         在dependencies节点下加入对aar的依赖
-    compile(name: 'kutils-1.2.0', ext: 'aar')
- ```
- ****
- 集成过程出现问题可联系本人QQ：3648415(注明来自github)
+
+#### 1.预留jcenter仓库方式  
+#### 2.clone项目到本地，将kutils库直接依赖到项目。
+```Java
+compile project(':kutils')
+```
+#### 3.aar方式依赖
+##### 在项目根目录下新建aars文件夹，将kutils目录build/outputs下的kutils-1.2.0.aar文件copy进aars文件夹  在app的build.gradle 最外层节点加入
+```xml
+repositories { flatDir { dirs '../aars' } }
+```
+#####   在dependencies节点下加入对aar的依赖
+```xml
+compile(name: 'kutils-1.2.0', ext: 'aar') 
+```
+    
+****
+集成过程出现问题可联系本人QQ：3648415(注明来自github)
+****

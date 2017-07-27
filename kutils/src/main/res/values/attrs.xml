@@ -63,5 +63,10 @@
         <!-- 占位图缩放模式 -->
         <attr name="android:scaleType"/>
     </declare-styleable>
-
+    <declare-styleable name="Dialog">
+        <attr name="DialogTitleAppearance" format="reference" />
+        <attr name="DialogTitleText" format="reference|string" />
+        <attr name="DialogSpotColor" format="reference|color"/>
+        <attr name="DialogSpotCount" format="integer"/>
+    </declare-styleable>
 </resources>

@@ -8,6 +8,8 @@ README
 ## 目录
 * [日志输出](#日志输出)
 * [引导页集成](#引导页集成)
+* [对话框进度条封装](#对话框进度条封装)
+* [Activity基类封装](#Activity基类封装)
 * [集成该库](#集成该库)
 
 
@@ -20,10 +22,14 @@ README
 - [x] 日志一目了然  
 
 ### 使用
-#### 1.在application中初始化操作（注意：不初始化直接调用Log输出日志会有空指针异常抛出）
+#### 1.在application中初始化操作（注意：在使用库之前必须在application中执行如下代码。不初始化直接调用Log输出日志会有空指针异常抛出）
 
 ```xml
-    Log.init(TAG, true);//开启日志打印
+      @Override
+        public void onCreate() {
+            super.onCreate();
+            KUtilLibs.init(true, TAG, getApplicationContext());
+        }
 ```
 
 #### 2.调用和系统Log调用一样 
@@ -198,6 +204,14 @@ mContentBanner.setEnterSkipViewIdAndDelegate(R.id.btn_guide_enter, R.id.tv_guide
 
 
 
+
+## 对话框进度条封装
+------------------
+### 如需使用进度条对话框等，请直接通过DialogUIUtils调用静态方法
+
+## Activity基类封装
+--------------------
+### 使用请参考demo，请继承自BaseActivity自行拓展
 
 
 

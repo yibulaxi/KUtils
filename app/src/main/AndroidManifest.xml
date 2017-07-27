@@ -13,7 +13,8 @@
         <activity android:name=".MainActivity">
 
         </activity>
-        <activity android:name=".GuideAty">
+        <activity android:name=".GuideAty"
+            android:theme="@style/AppSplash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

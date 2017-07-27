@@ -1,14 +1,12 @@
 package com.alan.kutilssample;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 
+import com.zwy.kutils.widget.baseview.BaseActivity;
 import com.zwy.kutils.widget.guide.BGABanner;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
 
 /**
  * ================================================================
@@ -18,19 +16,59 @@ import butterknife.ButterKnife;
  * 至尊宝：长夜漫漫无心睡眠，我以为只有我睡不着，原来晶晶姑娘你也睡不着 ！
  * ================================================================
  */
-public class GuideAty extends Activity {
+public class GuideAty extends MyBaseActivity {
     @Bind(R.id.banner_guide_background)
     BGABanner mBannerGuideBackground;
     @Bind(R.id.banner_guide_foreground)
     BGABanner mBannerGuideForeground;
 
+    /**
+     * 是否需要沉浸式状态栏 不需要时返回null即可
+     *
+     * @return StatusBarTintModle(boolean isTranslucentStatus, int color);
+     */
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.guideaty);
-        ButterKnife.bind(this);
+    protected StatusBarTintModle isTranslucentStatus() {
+//        return new StatusBarTintModle(true,R.color.trans );
+        return null;
+    }
+
+    /**
+     * 设置布局ID
+     *
+     * @return 资源文件ID
+     */
+    @Override
+    protected int getLayoutId() {
+        return R.layout.guideaty;
+    }
+
+    /**
+     * 初始化View
+     *
+     * @param savedInstanceState aty销毁时保存的临时参数
+     */
+    @Override
+    protected void initView(Bundle savedInstanceState) {
         initListener();
+    }
+
+    /**
+     * 初始化数据源
+     */
+    @Override
+    protected void initData() {
         setData();
+    }
+
+    /**
+     * Bundle  传递数据
+     *
+     * @param extras
+     */
+    @Override
+    protected void getBundleExtras(Bundle extras) {
+
     }
 
     private void initListener() {
@@ -38,6 +76,7 @@ public class GuideAty extends Activity {
         mBannerGuideForeground.setEnterSkipViewIdAndDelegate(R.id.btn_guide_enter, R.id.tv_guide_skip, new BGABanner.GuideDelegate() {
             @Override
             public void onClickEnterOrSkip() {
+                showToast("你好");
                 startActivity(new Intent(GuideAty.this, MainActivity.class));
                 finish();
             }
@@ -62,4 +101,11 @@ public class GuideAty extends Activity {
         mBannerGuideBackground.setBackgroundResource(android.R.color.white);
     }
 
+    /**
+     * 自己进行相关逻辑拓展
+     */
+    @Override
+    protected void test() {
+
+    }
 }

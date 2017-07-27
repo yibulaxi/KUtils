@@ -2,7 +2,7 @@ package com.alan.kutilssample;
 
 import android.app.Application;
 
-import com.zwy.kutils.utils.Log;
+import com.zwy.kutils.KUtilLibs;
 
 /**
  * ================================================================
@@ -14,9 +14,10 @@ import com.zwy.kutils.utils.Log;
  */
 public class App extends Application {
     public final String TAG = "KUtilsSample";
+
     @Override
     public void onCreate() {
         super.onCreate();
-        Log.init(TAG, true);//开启日志打印
+        KUtilLibs.init(true, TAG, getApplicationContext());
     }
 }

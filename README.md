@@ -31,7 +31,7 @@ README
 
 
 
-### Log打印
+## Log打印
 -----------
  在application中初始化操作（注意：不初始化直接调用Log输出日志会有空指针异常抛出）：
  ```
@@ -50,7 +50,7 @@ README
  ```
  输出效果图  
  ![baidu](https://github.com/devzwy/KUtils/raw/master/images/loginfo.png)  
-### 集成KUtils
+## 集成KUtils
 -----------
  - 方式1   预留jcenter仓库方式  
  ```

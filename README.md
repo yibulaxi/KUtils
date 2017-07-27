@@ -53,7 +53,7 @@ README
 
  使用:
  ```diff
-+ 在application中初始化操作（注意：不初始化直接调用Log输出日志会有空指针异常抛出）：
+1 在application中初始化操作（注意：不初始化直接调用Log输出日志会有空指针异常抛出）：
  ```
  
  ```Java
@@ -61,7 +61,7 @@ README
  ```
  
   ```diff
-+ 调用和系统Log调用一样
+2 调用和系统Log调用一样
   ```
  ```Java
   private String json = "{\"key_a\":999,\"key_b\":\"这是b的值\"}";

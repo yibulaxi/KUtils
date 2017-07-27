@@ -6,8 +6,8 @@ README
 ### E-mail:dev_zwy@aliyun.com
 ****
 ## 目录
-* [优雅的日志输出(突破系统日志打印长度的限制,自动校验Json串输出格式)](##Log打印)
-* [在项目中集成KUtils](##集成KUtils)
+* [优雅的日志输出(突破系统日志打印长度的限制,自动校验Json串输出格式)](#优雅的日志输出(突破系统日志打印长度的限制,自动校验Json串输出格式))
+* [在项目中集成KUtils](##在项目中集成KUtils)
 
 
 
@@ -31,7 +31,7 @@ README
 
 
 
-## Log打印
+### 优雅的日志输出(突破系统日志打印长度的限制,自动校验Json串输出格式)
 -----------
  在application中初始化操作（注意：不初始化直接调用Log输出日志会有空指针异常抛出）：
  ```
@@ -50,7 +50,7 @@ README
  ```
  输出效果图  
  ![baidu](https://github.com/devzwy/KUtils/raw/master/images/loginfo.png)  
-## 集成KUtils
+### 在项目中集成KUtils
 -----------
  - 方式1   预留jcenter仓库方式  
  ```

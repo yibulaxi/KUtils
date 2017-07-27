@@ -50,4 +50,4 @@ Log.e(text);
 Log.w(text);
  ```
  输出效果图  
- ![baidu](http://www.baidu.com/img/bdlogo.gif "百度logo")
+ ![baidu](https://github.com/devzwy/KUtils/raw/master/images/loginfo.png)

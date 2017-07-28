@@ -277,7 +277,7 @@ new ActionSheetDialog(mContext)
 ## 集成该库
 -----------
 
-#### 1.jcenter仓库方式依赖
+#### 1.通过jcenter仓库方式依赖
 ##### 项目根目录下的build.gradle加入
 ```Java
 allprojects {
@@ -308,4 +308,20 @@ compile(name: 'kutils-release', ext: 'aar')
 ****
 集成过程出现问题可联系本人QQ：3648415(注明来自github)
 ****
+
+## License
+
+    Copyright 2015 bingoogolapple
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
 [点我回到顶部](#readme)

@@ -1,32 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<cn.bingoogolapple.refreshlayout.BGARefreshLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/bgarefreshlayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/pickerview_timebtn_pre"
+    android:background="@mipmap/uoko_guide_background_1"
     tools:context="com.alan.kutilssample.MainActivity">
 
-    <LinearLayout
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="vertical">
+        android:layout_marginTop="20dp"
+        android:layout_height="?actionBarSize"
+        android:background="@color/trans"
+        android:gravity="center"
+        android:text="这里是标题栏"
+        android:textColor="@color/ksw_md_solid_disable"
+        android:textSize="18sp"/>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@color/actionsheet_blue"
-            android:gravity="center"
-            android:text="actionbar"
-            android:textColor="@color/ksw_md_solid_disable"/>
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/rv"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
-
-    </LinearLayout>
-
-</cn.bingoogolapple.refreshlayout.BGARefreshLayout>
+</RelativeLayout>

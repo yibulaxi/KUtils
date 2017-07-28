@@ -278,6 +278,19 @@ new ActionSheetDialog(mContext)
 -----------
 
 #### 1.预留jcenter仓库方式  
+##### 项目根目录下的加入
+```Java
+allprojects {
+    repositories {
+        jcenter()
+        maven { url "https://dl.bintray.com/devzwy/maven" }
+    }
+}
+```
+##### 在APP的build.gradle dependencies节点下加入
+```Java
+compile 'com.zwy.kutils:kutils:2.0'
+```
 #### 2.clone项目到本地，将kutils库直接依赖到项目。
 ```Java
 compile project(':kutils')

@@ -1,12 +1,16 @@
 package com.alan.kutilssample;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.RecyclerView;
 
 import com.zwy.kutils.utils.Log;
 import com.zwy.kutils.widget.baseview.BaseActivity;
 
+import butterknife.Bind;
+
 public class MainActivity extends BaseActivity {
+    @Bind(R.id.rv)
+    RecyclerView mRv;
     private String json = "{\"key_a\":999,\"key_b\":\"这是b的值\"}";
     private String text = "这是一条测试日志";
 
@@ -52,7 +56,6 @@ public class MainActivity extends BaseActivity {
      */
     @Override
     protected void initData() {
-
     }
 
     /**

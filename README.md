@@ -5,6 +5,12 @@ README
 ### Author:赵文贇
 ### E-mail:dev_zwy@aliyun.com
 ****
+```diff
+- V2.1:将增加GreenDao使用代码。
+- V2.2:将增加万能recycleView适配器的使用代码。
+- V2.3:将增加OkGo使用代码。
+- V2.4:将增加部分常用自定义View。
+```
 ## 目录
 * [日志输出](#日志输出)
 * [引导页集成](#引导页集成)

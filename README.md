@@ -17,7 +17,7 @@ README
 * [日志输出](#日志输出)
 * [引导页集成](#引导页集成)
 * [对话框进度条封装](#对话框进度条封装)
-* [Activity基类封装](#Activity基类封装)
+* [Activity封装](#Activity封装)
 * [集成该库](#集成该库)
 
 
@@ -260,9 +260,168 @@ new ActionSheetDialog(mContext)
 ```
 #### 效果图  
 ![log](https://github.com/devzwy/KUtils/raw/master/images/dialog_3.png)  
-## Activity基类封装
+## Activity封装
 --------------------
 ### 使用请参考demo，请继承自BaseActivity自行拓展
+```Java
+public abstract class BaseActivity extends AppCompatActivity {
+
+    protected BaseActivity mContext;
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (isTranslucentStatus()!=0) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+                setTranslucentStatus(true);
+                SystemBarTintManager tintManager = new SystemBarTintManager(this);
+                tintManager.setStatusBarTintEnabled(true);
+                tintManager.setStatusBarTintResource(isTranslucentStatus());//通知栏所需颜色
+            }
+        }
+
+        Bundle extras = getIntent().getExtras();
+        if (null != extras) {
+            getBundleExtras(extras);
+        }
+        mContext = this;
+        setContentView(getLayoutId());
+        ButterKnife.bind(this);
+        AppManager.getAppManager().addActivity(this);
+        initView(savedInstanceState);
+        initData();
+    }
+
+    /**
+     * 是否需要沉浸式状态栏 不需要时返回0 需要时返回颜色
+     *
+     * @return StatusBarTintModle(boolean isTranslucentStatus, int color);
+     */
+    protected abstract @ColorRes int isTranslucentStatus();
+
+
+    /**
+     * 设置布局ID
+     *
+     * @return 资源文件ID
+     */
+    protected abstract
+    @LayoutRes
+    int getLayoutId();
+
+    /**
+     * 初始化View
+     *
+     * @param savedInstanceState aty销毁时保存的临时参数
+     */
+    protected abstract void initView(Bundle savedInstanceState);
+
+    /**
+     * 初始化数据源
+     */
+    protected abstract void initData();
+
+    /**
+     * Bundle  传递数据
+     *
+     * @param extras
+     */
+    protected abstract void getBundleExtras(Bundle extras);
+
+    @TargetApi(19)
+    private void setTranslucentStatus(boolean on) {
+        Window win = getWindow();
+        WindowManager.LayoutParams winParams = win.getAttributes();
+        final int bits = WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS;
+        if (on) {
+            winParams.flags |= bits;
+        } else {
+            winParams.flags &= ~bits;
+        }
+        win.setAttributes(winParams);
+    }
+
+    //Toast显示
+    protected void showToast(String string) {
+        DialogUIUtils.showToast(string);
+    }
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        ButterKnife.unbind(this);
+        AppManager.getAppManager().finishActivity(this);
+    }
+
+    /**
+     * 界面跳转
+     *
+     * @param cls 目标Activity
+     */
+    protected void readyGo(Class<?> cls) {
+        readyGo(cls, null);
+    }
+
+    /**
+     * 跳转界面，传参
+     *
+     * @param cls    目标Activity
+     * @param bundle 数据
+     */
+    protected void readyGo(Class<?> cls, Bundle bundle) {
+        Intent intent = new Intent(this, cls);
+        if (null != bundle)
+            intent.putExtras(bundle);
+        startActivity(intent);
+    }
+
+    /**
+     * 跳转界面并关闭当前界面
+     *
+     * @param cls 目标Activity
+     */
+    protected void readyGoThenKill(Class<?> cls) {
+        readyGoThenKill(cls, null);
+    }
+
+    /**
+     * @param cls    目标Activity
+     * @param bundle 数据
+     */
+    protected void readyGoThenKill(Class<?> cls, Bundle bundle) {
+        readyGo(cls, bundle);
+        finish();
+    }
+
+    /**
+     * startActivityForResult
+     *
+     * @param cls         目标Activity
+     * @param requestCode 发送判断值
+     */
+    protected void readyGoForResult(Class<?> cls, int requestCode) {
+        Intent intent = new Intent(this, cls);
+        startActivityForResult(intent, requestCode);
+    }
+
+    /**
+     * startActivityForResult with bundle
+     *
+     * @param cls         目标Activity
+     * @param requestCode 发送判断值
+     * @param bundle      数据
+     */
+    protected void readyGoForResult(Class<?> cls, int requestCode, Bundle bundle) {
+        Intent intent = new Intent(this, cls);
+        if (null != bundle) {
+            intent.putExtras(bundle);
+        }
+        startActivityForResult(intent, requestCode);
+    }
+
+}
+```
 
 
 

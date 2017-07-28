@@ -1,6 +1,7 @@
 README
 ===========================
-封装android开发中常用的Utils。可直接依赖使用，喜欢的话不妨star一下吧。  
+封装android开发中常用的Utils。可直接依赖使用，喜欢的话不妨star一下吧。 
+ 
 [![License](https://img.shields.io/badge/license-Apache%202-green.svg)](https://www.apache.org/licenses/LICENSE-2.0)
 ****
 ### Author:赵文贇

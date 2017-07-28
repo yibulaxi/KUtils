@@ -27,15 +27,15 @@ public class GuideAty extends MyBaseActivity {
     BGABanner mBannerGuideForeground;
     private Dialog dialog;
 
+
     /**
-     * 是否需要沉浸式状态栏 不需要时返回null即可
+     * 是否需要沉浸式状态栏 不需要时返回0 需要时返回颜色
      *
      * @return StatusBarTintModle(boolean isTranslucentStatus, int color);
      */
     @Override
-    protected StatusBarTintModle isTranslucentStatus() {
-//        return new StatusBarTintModle(true,R.color.trans );
-        return null;
+    protected int isTranslucentStatus() {
+        return R.color.trans;
     }
 
     /**

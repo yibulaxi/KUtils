@@ -15,4 +15,5 @@ public abstract class MyBaseActivity extends BaseActivity {
      * 自己进行相关逻辑拓展
      */
     protected abstract void test();
+
 }

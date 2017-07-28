@@ -4,10 +4,14 @@ import android.annotation.TargetApi;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.ColorRes;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
@@ -31,13 +35,12 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        StatusBarTintModle bar = isTranslucentStatus();
-        if (null!=bar && bar.isTranslucentStatus) {
+        if (isTranslucentStatus()!=0) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-                setTranslucentStatus(bar.isTranslucentStatus);
+                setTranslucentStatus(true);
                 SystemBarTintManager tintManager = new SystemBarTintManager(this);
                 tintManager.setStatusBarTintEnabled(true);
-                tintManager.setStatusBarTintResource(bar.getColor());//通知栏所需颜色
+                tintManager.setStatusBarTintResource(isTranslucentStatus());//通知栏所需颜色
             }
         }
 
@@ -54,11 +57,11 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     /**
-     * 是否需要沉浸式状态栏 不需要时返回null即可
+     * 是否需要沉浸式状态栏 不需要时返回0 需要时返回颜色
      *
      * @return StatusBarTintModle(boolean isTranslucentStatus, int color);
      */
-    protected abstract StatusBarTintModle isTranslucentStatus();
+    protected abstract @ColorRes int isTranslucentStatus();
 
 
     /**
@@ -181,30 +184,4 @@ public abstract class BaseActivity extends AppCompatActivity {
         startActivityForResult(intent, requestCode);
     }
 
-    protected class StatusBarTintModle {
-        private boolean isTranslucentStatus;
-        private  int color;
-
-
-        public StatusBarTintModle(boolean isTranslucentStatus,@DrawableRes int color) {
-            this.isTranslucentStatus = isTranslucentStatus;
-            this.color = color;
-        }
-
-        public boolean isTranslucentStatus() {
-            return isTranslucentStatus;
-        }
-
-        public void setTranslucentStatus(boolean translucentStatus) {
-            isTranslucentStatus = translucentStatus;
-        }
-
-        public int getColor() {
-            return color;
-        }
-
-        public void setColor(int color) {
-            this.color = color;
-        }
-    }
 }

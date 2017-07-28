@@ -17,7 +17,7 @@ README
 * [日志输出](#日志输出)
 * [引导页集成](#引导页集成)
 * [对话框进度条封装](#对话框进度条封装)
-* [Activity封装](#Activity封装)
+* [Activity封装](#Aty基类封装)
 * [集成该库](#集成该库)
 
 
@@ -260,7 +260,7 @@ new ActionSheetDialog(mContext)
 ```
 #### 效果图  
 ![log](https://github.com/devzwy/KUtils/raw/master/images/dialog_3.png)  
-## Activity封装
+## Aty基类封装
 --------------------
 ### 使用请参考demo，请继承自BaseActivity自行拓展
 ```Java

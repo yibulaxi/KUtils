@@ -277,8 +277,8 @@ new ActionSheetDialog(mContext)
 ## 集成该库
 -----------
 
-#### 1.预留jcenter仓库方式  
-##### 项目根目录下的加入
+#### 1.jcenter仓库方式依赖
+##### 项目根目录下的build.gradle加入
 ```Java
 allprojects {
     repositories {

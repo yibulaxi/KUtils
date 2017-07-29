@@ -1,6 +1,6 @@
 README
 ===========================
-封装android开发中常用的Utils。可直接依赖使用，喜欢的话不妨star一下吧。 
+封装android开发中常用的Utils。可直接依赖使用，喜欢的话不妨star一下吧。 内部部分代码来源第三方，感谢这些大牛，我只是拿来用用，不要杀我灭口。
  
 [![License](https://img.shields.io/badge/license-Apache%202-green.svg)](https://www.apache.org/licenses/LICENSE-2.0)
 ****
@@ -8,7 +8,8 @@ README
 ### E-mail:dev_zwy@aliyun.com
 ****
 ```diff
-- V2.1:圆形View 图片加载 将增加万能recycleView适配器的使用代码。别忘了项目根目录下的依赖库导入
+即将更新
+- V2.1:将增加万能recycleView适配器的使用代码。别忘了项目根目录下的依赖库导入
 - V2.2:将增加GreenDao使用代码。
 - V2.3:将增加OkGo使用代码。
 - V2.4:将增加部分常用自定义View。

@@ -438,7 +438,7 @@ public abstract class BaseActivity extends AppCompatActivity {
             android:layout_marginLeft="15dp"/>
 ```
 
-#### 图片加载
+#### Glide图片加载的简单使用
 ```Java
 Glide.with(mContext).load("http://img14.poco.cn/mypoco/myphoto/20130410/14/173420773201304101425203047950463653_010.jpg")
                 .asBitmap().placeholder(R.drawable.nullimg).into(mCv);

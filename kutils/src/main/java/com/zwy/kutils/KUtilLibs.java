@@ -15,7 +15,7 @@ import com.zwy.kutils.widget.loadingdialog.DialogUIUtils;
  * ================================================================
  */
 public class KUtilLibs {
-    private static String TAG ="KUtilLibs";
+    private static String TAG_ ="KUtilLibs";
     /**
      * 初始化库
      *
@@ -24,7 +24,7 @@ public class KUtilLibs {
      * @param context application
      */
     public static void init(@NonNull boolean isDebug, @NonNull String TAG, @NonNull Context context) {
-        android.util.Log.d(TAG,"看到这条消息表示KUtilsV2.1版本更新");
+        android.util.Log.d(TAG_,"==============您使用的KUtils版本:2.1==============");
         if (TAG == null || context == null) throw new RuntimeException("KUtilLibs 初始化参数均不能为空");
         if (isDebug) Log.init(TAG, true);//开启日志打印
         DialogUIUtils.init(context);

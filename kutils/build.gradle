@@ -1,7 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
-version = "2.0"
+version = "2.1"
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.3"
@@ -50,7 +50,7 @@ dependencies {
 
 def siteUrl = 'https://github.com/devzwy/KUtils'      // 项目的主页
 def gitUrl = 'https://github.com/devzwy/KUtils.git'   // Git仓库的url
-group = "com.zwy.kutils"
+group = "com.github.zwy"
 install {
     repositories.mavenInstaller {
         // This generates POM.xml with proper parameters
@@ -115,7 +115,7 @@ bintray {
     configurations = ['archives']
     pkg {
         repo = "maven"
-        name = "kutils"    //发布到JCenter上的项目名字
+        name = "KUtils"    //发布到JCenter上的项目名字
         websiteUrl = siteUrl
         vcsUrl = gitUrl
         licenses = ["Apache-2.0"]

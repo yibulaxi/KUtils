@@ -14,10 +14,9 @@ import com.zwy.kutils.KUtilLibs;
  */
 public class App extends Application {
     public final String TAG = "KUtilsSample";
-
     @Override
     public void onCreate() {
         super.onCreate();
-        KUtilLibs.init(true, TAG, getApplicationContext());
+        KUtilLibs.getInstance().init(true, TAG, getApplicationContext());
     }
 }

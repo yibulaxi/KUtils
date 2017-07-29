@@ -8,8 +8,8 @@ README
 ### E-mail:dev_zwy@aliyun.com
 ****
 ```diff
-- V2.1:将增加GreenDao使用代码。
-- V2.2:将增加万能recycleView适配器的使用代码。别忘了项目根目录下的依赖库导入
+- V2.1:圆形View 图片加载 将增加万能recycleView适配器的使用代码。别忘了项目根目录下的依赖库导入
+- V2.2:将增加GreenDao使用代码。
 - V2.3:将增加OkGo使用代码。
 - V2.4:将增加部分常用自定义View。
 ```
@@ -18,6 +18,7 @@ README
 * [引导页集成](#引导页集成)
 * [对话框进度条封装](#对话框进度条封装)
 * [基类封装](#基类封装)
+* [圆角图片及图片加载](#圆角图片及图片加载)
 * [集成该库](#集成该库)
 
 
@@ -423,9 +424,27 @@ public abstract class BaseActivity extends AppCompatActivity {
 
 }
 ```
+## 圆角图片及图片加载
+-------------------
 
+#### 使用和系统Image相同
+```xml
+<com.zwy.kutils.widget.customview.circleimageview.CircleImageView
+            android:id="@+id/cv"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"/>
+```
 
-
+#### 图片加载
+```Java
+Glide.with(mContext).load("http://img14.poco.cn/mypoco/myphoto/20130410/14/173420773201304101425203047950463653_010.jpg")
+                .asBitmap().placeholder(R.drawable.nullimg).into(mCv);
+```
+#### 效果图  
+![circleimageview](https://github.com/devzwy/KUtils/raw/master/images/circleimageview.png)  
 
 
 

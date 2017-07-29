@@ -8,15 +8,28 @@
     android:background="@mipmap/uoko_guide_background_1"
     tools:context="com.alan.kutilssample.MainActivity">
 
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_marginTop="20dp"
         android:layout_height="?actionBarSize"
-        android:background="@color/trans"
-        android:gravity="center"
-        android:text="这里是标题栏"
-        android:textColor="@color/ksw_md_solid_disable"
-        android:textSize="18sp"/>
+        android:layout_marginTop="20dp"
+        android:background="@color/trans">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="KUtilsTestSample"
+            android:textColor="@color/ksw_md_solid_disable"
+            android:textSize="18sp"/>
+
+        <com.zwy.kutils.widget.customview.circleimageview.CircleImageView
+            android:id="@+id/cv"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"/>
+    </RelativeLayout>
 
 </RelativeLayout>

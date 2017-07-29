@@ -1,12 +1,21 @@
 package com.alan.kutilssample;
 
 import android.os.Bundle;
+import android.widget.RelativeLayout;
 
+import com.bumptech.glide.Glide;
 import com.zwy.kutils.utils.Log;
 import com.zwy.kutils.widget.baseview.BaseActivity;
+import com.zwy.kutils.widget.customview.circleimageview.CircleImageView;
+
+import butterknife.Bind;
 
 
 public class MainActivity extends BaseActivity {
+    @Bind(R.id.cv)
+    CircleImageView mCv;
+    @Bind(R.id.bgarefreshlayout)
+    RelativeLayout mBgarefreshlayout;
     private String json = "{\"key_a\":999,\"key_b\":\"这是b的值\"}";
     private String text = "这是一条测试日志";
 
@@ -52,6 +61,8 @@ public class MainActivity extends BaseActivity {
      */
     @Override
     protected void initData() {
+        Glide.with(mContext).load("http://img14.poco.cn/mypoco/myphoto/20130410/14/173420773201304101425203047950463653_010.jpg")
+                .asBitmap().placeholder(R.drawable.nullimg).into(mCv);
     }
 
     /**

@@ -69,4 +69,11 @@
         <attr name="DialogSpotColor" format="reference|color"/>
         <attr name="DialogSpotCount" format="integer"/>
     </declare-styleable>
+
+
+    <!--圆角头像-->
+    <declare-styleable name="CircleImageView">
+        <attr name="border_width" format="dimension"/>
+        <attr name="border_color" format="color"/>
+    </declare-styleable>
 </resources>

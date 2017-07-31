@@ -48,6 +48,12 @@ public class GuideAty extends MyBaseActivity {
      */
     @Override
     protected int getLayoutId() {
+
+        List<IsFirstEnterApp> isFirstEnterApps = App.getDaoSession().getIsFirstEnterAppDao().queryBuilder().where(IsFirstEnterAppDao.Properties.IsFirstEnterApp.eq(false)).list();
+        if (isFirstEnterApps != null && isFirstEnterApps.size() > 0) {
+            readyGo(MainActivity.class);
+            finish();
+        }
         return R.layout.guideaty;
     }
 
@@ -106,12 +112,6 @@ public class GuideAty extends MyBaseActivity {
                 }).start();
             }
         });
-
-        List<IsFirstEnterApp> isFirstEnterApps = App.getDaoSession().getIsFirstEnterAppDao().queryBuilder().where(IsFirstEnterAppDao.Properties.IsFirstEnterApp.eq(false)).list();
-        if (isFirstEnterApps != null && isFirstEnterApps.size() > 0) {
-            readyGo(MainActivity.class);
-            finish();
-        }
     }
 
     private void showDialog(boolean b) {

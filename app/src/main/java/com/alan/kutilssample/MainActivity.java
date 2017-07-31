@@ -104,7 +104,7 @@ public class MainActivity extends BaseActivity {
                 setAdapterData();
             }
         });
-
+        //加载更多监听
         mAdapter.setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
             @Override
             public void onLoadMoreRequested() {

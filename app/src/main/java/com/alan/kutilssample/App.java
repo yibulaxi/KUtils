@@ -2,6 +2,7 @@ package com.alan.kutilssample;
 
 import android.app.Application;
 
+import com.alan.kutilssample.bean.IsFirstEnterApp;
 import com.alan.kutilssample.greendao.DaoMaster;
 import com.alan.kutilssample.greendao.DaoSession;
 import com.zwy.kutils.KUtilLibs;
@@ -29,6 +30,16 @@ public class App extends Application {
         KUtilLibs.getInstance().init(true, TAG, getApplicationContext());
         //初始化GreenDao
         initGreenDao();
+        initAppInfos();
+    }
+
+    private void initAppInfos() {
+        IsFirstEnterApp isFirstEnterApp =new IsFirstEnterApp();
+        isFirstEnterApp.setId(0l);
+        isFirstEnterApp.setIsFirstEnterApp(true);
+        if (mDaoSession.getIsFirstEnterAppDao().load(0l)==null){
+            mDaoSession.getIsFirstEnterAppDao().insert(isFirstEnterApp);
+        }
     }
 
     private void initGreenDao() {

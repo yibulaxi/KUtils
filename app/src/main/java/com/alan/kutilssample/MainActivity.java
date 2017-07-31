@@ -1,18 +1,16 @@
 package com.alan.kutilssample;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.text.SpannableString;
-import android.text.SpannableStringBuilder;
-import android.text.style.ForegroundColorSpan;
 import android.view.View;
 import android.widget.TextView;
 
+import com.alan.kutilssample.bean.IsFirstEnterApp;
 import com.alan.kutilssample.bean.TitleModel;
+import com.alan.kutilssample.greendao.IsFirstEnterAppDao;
 import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
@@ -57,6 +55,12 @@ public class MainActivity extends BaseActivity {
      */
     @Override
     protected int getLayoutId() {
+        List<IsFirstEnterApp> isFirstEnterApps = App.getDaoSession().getIsFirstEnterAppDao().queryBuilder().where(IsFirstEnterAppDao.Properties.IsFirstEnterApp.eq(true)).list();
+        if (isFirstEnterApps != null && isFirstEnterApps.size() > 0) {
+            Log.d("检查到用户未第一次登录，已关闭也引导页面显示");
+            isFirstEnterApps.get(0).setIsFirstEnterApp(false);
+            App.getDaoSession().getIsFirstEnterAppDao().update(isFirstEnterApps.get(0));
+        }
         return R.layout.activity_main;
     }
 
@@ -79,9 +83,9 @@ public class MainActivity extends BaseActivity {
         mAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                if( ((TitleModel)adapter.getData().get(position)).getIndex()){
+                if (((TitleModel) adapter.getData().get(position)).getIndex()) {
                     toNext(position);
-                }else {
+                } else {
                     showToast("您点击了第" + (position + 1) + "条数据");
                 }
             }
@@ -114,7 +118,7 @@ public class MainActivity extends BaseActivity {
     }
 
     private void toNext(int position) {
-        switch (position){
+        switch (position) {
             case 0:
                 readyGo(GreenDaoAty.class);
                 break;

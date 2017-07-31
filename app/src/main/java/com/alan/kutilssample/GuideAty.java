@@ -4,10 +4,13 @@ import android.app.Dialog;
 import android.os.Bundle;
 import android.view.View;
 
+import com.alan.kutilssample.bean.IsFirstEnterApp;
+import com.alan.kutilssample.greendao.IsFirstEnterAppDao;
 import com.zwy.kutils.widget.guide.BGABanner;
 import com.zwy.kutils.widget.loadingdialog.DialogUIUtils;
 import com.zwy.kutils.widget.loadingdialog.alertdialog.ActionSheetDialog;
 
+import java.util.List;
 import java.util.Random;
 
 import butterknife.Bind;
@@ -103,6 +106,12 @@ public class GuideAty extends MyBaseActivity {
                 }).start();
             }
         });
+
+        List<IsFirstEnterApp> isFirstEnterApps = App.getDaoSession().getIsFirstEnterAppDao().queryBuilder().where(IsFirstEnterAppDao.Properties.IsFirstEnterApp.eq(false)).list();
+        if (isFirstEnterApps != null && isFirstEnterApps.size() > 0) {
+            readyGo(MainActivity.class);
+            finish();
+        }
     }
 
     private void showDialog(boolean b) {

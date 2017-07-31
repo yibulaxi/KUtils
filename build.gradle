@@ -12,6 +12,9 @@ buildscript {
         //如下两行为提交jecenter仓库时用到的 可注掉
         classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'
         classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
+
+        //greenDao
+        classpath 'org.greenrobot:greendao-gradle-plugin:3.2.1'
     }
 }
 

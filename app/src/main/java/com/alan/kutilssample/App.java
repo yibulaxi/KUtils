@@ -2,7 +2,12 @@ package com.alan.kutilssample;
 
 import android.app.Application;
 
+import com.alan.kutilssample.greendao.DaoMaster;
+import com.alan.kutilssample.greendao.DaoSession;
 import com.zwy.kutils.KUtilLibs;
+import com.zwy.kutils.utils.Log;
+
+import org.greenrobot.greendao.database.Database;
 
 /**
  * ================================================================
@@ -14,9 +19,27 @@ import com.zwy.kutils.KUtilLibs;
  */
 public class App extends Application {
     public final String TAG = "KUtilsSample";
+    private static DaoSession mDaoSession;
+    private final String DBNAME = "kutils_db";
+
     @Override
     public void onCreate() {
         super.onCreate();
+        //初始化KUtils
         KUtilLibs.getInstance().init(true, TAG, getApplicationContext());
+        //初始化GreenDao
+        initGreenDao();
+    }
+
+    private void initGreenDao() {
+        DaoMaster.DevOpenHelper openHelper = new DaoMaster.DevOpenHelper(getApplicationContext(), DBNAME);
+        Database db = openHelper.getWritableDb();
+        DaoMaster daoMaster = new DaoMaster(db);
+        mDaoSession = daoMaster.newSession();
+        Log.d("GreenDao初始化成功");
+    }
+
+    public static DaoSession getDaoSession() {
+        return mDaoSession;
     }
 }

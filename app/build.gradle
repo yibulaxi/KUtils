@@ -1,5 +1,5 @@
 apply plugin: 'com.android.application'
-
+apply plugin: 'org.greenrobot.greendao'
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.3"
@@ -28,6 +28,15 @@ android {
         // but continue the build even when errors are found:
         abortOnError false
     }
+
+    greendao {
+        schemaVersion 1//数据库版本号
+        daoPackage 'com.alan.kutilssample.greendao'//设置DaoMaster、DaoSession、Dao包名
+        targetGenDir 'src/main/java'//设置DaoMaster、DaoSession、Dao目录
+        //targetGenDirTestA：设置生成单元测试目录
+        //generateTests：设置自动生成单元测试用例
+    }
+
 }
 
 dependencies {

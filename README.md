@@ -455,6 +455,83 @@ Glide.with(mContext).load("http://img14.poco.cn/mypoco/myphoto/20130410/14/17342
 
 ## 数据库操作
 -------------------
+#### 1 配置项目的build.gradle
+```Java
+apply plugin: 'org.greenrobot.greendao'
+
+android {
+      greendao {
+            schemaVersion 1//数据库版本号
+            daoPackage 'com.alan.kutilssample.greendao'//设置DaoMaster、DaoSession、Dao包名 
+            targetGenDir 'src/main/java'//设置DaoMaster、DaoSession、Dao目录
+            //targetGenDirTestA：设置生成单元测试目录
+            //generateTests：设置自动生成单元测试用例
+        }
+}
+```
+##### 创建一张表(新建实体)
+###### 注解说明：  
+- @Entity-------实体注解  
+- @NotNull-------设置表中当前列的值不可为空  
+- @Convert-------指定自定义类型  
+- @Generated-------GreenDao运行所产生的构造函数或者方法，被此标注的代码可以变更或者下次运行时清除
+- @Id-------主键Long型，可以通过@Id(autoincrement=true)设置自增长。通过这个注解标记的字段必须是Long，数据库中表示它就是主键，并且默认是自增的。
+- @Index-------使用@Index作为一个属性来创建一个索引；定义多列索引(@linkEntity#indexes())
+- @JoinEntity-------定义表连接关系
+- @JoinProperty-------定义名称和引用名称属性关系
+- @Keep-------注解的代码段在GreenDao下次运行时保持不变---1.注解实体类：默认禁止修改此类---2.注解其他代码段，默认禁止修改注解的代码段
+- @OrderBy------- 指定排序
+- @Property-------设置一个非默认关系映射所对应的列名，默认是的使用字段名,举例:@Property(nameInDb="name")
+- @ToMany-------定义与多个实体对象的关系
+- @ToOne-------定义与另一个实体（一个实体对象）的关系
+- @Transient-------添加次标记之后不会生成数据库表的列
+- @Unique-------向数据库列添加了一个唯一的约束
+```Java
+
+/**
+ * ================================================================
+ * 创建时间：2017/7/31 上午10:42
+ * 创建人：Alan
+ * 文件描述：greendao测试表 注意 该类不能实现Serializable接口
+ * 至尊宝：长夜漫漫无心睡眠，我以为只有我睡不着，原来晶晶姑娘你也睡不着 ！
+ * ================================================================
+ */
+@Entity
+public class User{
+    @Id(autoincrement = true)
+    private long id;
+    private String name;
+    private int age;
+}
+
+```
+##### 编译项目(菜单Build-RebuildProject)后你会看到在你指定的目录下生成的类，如下图:
+![circleimageview](https://github.com/devzwy/KUtils/raw/master/images/greendao.png)   
+##### 现在可以初始化数据库相关参数了,application中：
+```Java
+   private void initGreenDao() {
+        DaoMaster.DevOpenHelper openHelper = new DaoMaster.DevOpenHelper(getApplicationContext(), DBNAME);
+        Database db = openHelper.getWritableDb();
+        DaoMaster daoMaster = new DaoMaster(db);
+        mDaoSession = daoMaster.newSession();
+        Log.d("GreenDao初始化成功");
+    }
+
+    public DaoSession getDaoSession() {
+        return mDaoSession;
+    }
+```
+##### 业务操作部分代码。其他请自行百度或查看demo
+
+
+
+
+
+
+
+
+
+
 
 ## 万能适配器
 -------------------
@@ -582,10 +659,25 @@ Glide.with(mContext).load("http://img14.poco.cn/mypoco/myphoto/20130410/14/17342
 #### 1.通过jcenter仓库方式依赖
 ##### 项目根目录下的build.gradle 中加入
 ```Java
+```Java
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.3.3'
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+        //greenDao
+        classpath 'org.greenrobot:greendao-gradle-plugin:3.2.1'//加入这一行代码
+    }
+}
+
 allprojects {
     repositories {
         jcenter()
-        maven { url "https://jitpack.io" }
+        maven { url "https://jitpack.io" }//加入这一行代码
     }
 }
 ```

@@ -32,7 +32,7 @@ public class KUtilLibs {
      * @param context application
      */
     public KUtilLibs init(@NonNull boolean isDebug, @NonNull String TAG, @NonNull Context context) {
-        android.util.Log.d(TAG_, "==============您使用的KUtils版本:2.2==============");
+        android.util.Log.d(TAG_, "==============您使用的KUtils版本:2.3==============");
         if (TAG == null || context == null) throw new RuntimeException("KUtilLibs 初始化参数均不能为空");
         this.appContext = context;
         if (isDebug) Log.init(TAG, true);//开启日志打印

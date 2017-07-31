@@ -32,17 +32,7 @@ README
 - [x] 日志一目了然  
 
 ### 使用
-#### 1.在application中初始化操作（注意：在使用库之前必须在application中执行如下代码。不初始化直接调用Log输出日志会有空指针异常抛出）
-
-```xml
-      @Override
-        public void onCreate() {
-            super.onCreate();
-            KUtilLibs.init(true, TAG, getApplicationContext());
-        }
-```
-
-#### 2.调用和系统Log调用一样 
+#### 调用和系统Log调用一样 
 ```xml
   private String json = "{\"key_a\":999,\"key_b\":\"这是b的值\"}";
   private String text = "这是一条测试日志";
@@ -718,7 +708,6 @@ String userName = Utils.getRandomName(1);
 #### 1.通过jcenter仓库方式依赖
 ##### 项目根目录下的build.gradle 中加入
 ```Java
-```Java
 buildscript {
     repositories {
         jcenter()
@@ -757,7 +746,15 @@ repositories { flatDir { dirs '../aars' } }
 ```xml
 compile(name: 'kutils-release', ext: 'aar') 
 ```
-    
+#### 无论采用哪种形式，都需要在application中初始化操作（注意：在使用库之前必须在application中执行如下代码。不初始化直接调用Log输出日志会有空指针异常抛出）
+              
+```Java
+                    @Override
+                      public void onCreate() {
+                          super.onCreate();
+                           KUtilLibs.init(true, TAG, this, new HttpBuild.Build(null, 10, HttpBuild.CookieType.MemoryCookieStore));
+                      }
+```
 ****
 集成过程出现问题可联系本人QQ：3648415(注明来自github)
 ****

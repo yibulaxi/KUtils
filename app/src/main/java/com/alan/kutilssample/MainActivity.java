@@ -174,7 +174,7 @@ public class MainActivity extends BaseActivity {
         mRv.setLayoutManager(new LinearLayoutManager(mContext));
         mRv.setAdapter(mAdapter);
         //发起一个简单的网络请求
-        OkGo.<String>post("").tag("").params("key", "v").execute(new AbsCallback<String>() {
+        OkGo.<String>post("http://www.baidu.com").tag("111111").params("key", "v").execute(new AbsCallback<String>() {
             @Override
             public void onSuccess(Response<String> response) {
 

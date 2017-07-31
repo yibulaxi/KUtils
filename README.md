@@ -430,10 +430,13 @@ public abstract class BaseActivity extends AppCompatActivity {
 
 #### 使用和系统Image相同
 ```xml
+<!--border_color  边框的颜色    border_width边框的宽度-->
 <com.zwy.kutils.widget.customview.circleimageview.CircleImageView
             android:id="@+id/cv"
             android:layout_width="40dp"
             android:layout_height="40dp"
+            app:border_color="@color/blue_3682"
+            app:border_width="2dp"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
             android:layout_marginLeft="15dp"/>

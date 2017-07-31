@@ -47,8 +47,8 @@ dependencies {
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'
-//    compile 'com.github.zwy:kutils:2.2'
-    compile project(':kutils')
+    compile 'com.github.zwy:kutils:2.3'
+//    compile project(':kutils')
 //    compile(name: 'kutils-1.2.0', ext: 'aar')
 }
 //repositories { flatDir { dirs '../aars' } }

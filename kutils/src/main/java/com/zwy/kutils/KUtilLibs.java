@@ -65,7 +65,9 @@ public class KUtilLibs {
         if (HttpBuild.httpInterceptor != null) {
             builder.addInterceptor(HttpBuild.httpInterceptor);
         } else {
-            builder.addInterceptor(new HttpLoggingInterceptor(TAG_));
+            HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor(TAG_);
+            interceptor.setPrintLevel(isDebug?HttpLoggingInterceptor.Level.BODY: HttpLoggingInterceptor.Level.NONE);
+            builder.addInterceptor(interceptor);
         }
 
         builder.connectTimeout(HttpBuild.timeOut, TimeUnit.SECONDS);

@@ -742,7 +742,7 @@ allprojects {
 ```
 ##### 在APP的build.gradle dependencies节点下加入
 ```Java
-compile 'com.github.zwy:kutils:2.1'
+compile 'com.github.zwy:kutils:2.3'
 ```
 #### 2.clone项目到本地，将kutils库直接依赖到项目。
 ```Java

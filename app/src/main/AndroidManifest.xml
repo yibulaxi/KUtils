@@ -23,6 +23,7 @@
             android:theme="@style/AppSplash">
 
         </activity>
+        <activity android:name=".GreenDaoAty"/>
     </application>
 
 </manifest>

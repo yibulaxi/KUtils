@@ -2,37 +2,26 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/bgarefreshlayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/uoko_guide_background_1"
     tools:context="com.alan.kutilssample.MainActivity">
 
-    <RelativeLayout
+    <include
+        android:id="@+id/actionbarss"
+        style="@style/actionbar"
+        layout="@layout/actionbar_"/>
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/sw"
         android:layout_width="match_parent"
-        android:layout_height="?actionBarSize"
-        android:layout_marginTop="20dp"
-        android:background="@color/trans">
+        android:layout_height="match_parent"
+        android:layout_below="@+id/actionbarss">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_centerInParent="true"
-            android:gravity="center"
-            android:text="KUtilsTestSample"
-            android:textColor="@color/ksw_md_solid_disable"
-            android:textSize="18sp"/>
+            ></android.support.v7.widget.RecyclerView>
 
-        <com.zwy.kutils.widget.customview.circleimageview.CircleImageView
-            android:id="@+id/cv"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            app:border_color="@color/blue_3682"
-            app:border_width="2dp"
-            android:layout_alignParentLeft="true"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="15dp"/>
-    </RelativeLayout>
-
+    </android.support.v4.widget.SwipeRefreshLayout>
 </RelativeLayout>

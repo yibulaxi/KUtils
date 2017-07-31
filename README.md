@@ -463,6 +463,15 @@ Glide.with(mContext).load("http://img14.poco.cn/mypoco/myphoto/20130410/14/17342
 -----------
 
 #### 1.通过jcenter仓库方式依赖
+##### 项目根目录下的build.gradle 中加入
+```Java
+allprojects {
+    repositories {
+        jcenter()
+        maven { url "https://jitpack.io" }
+    }
+}
+```
 ##### 在APP的build.gradle dependencies节点下加入
 ```Java
 compile 'com.github.zwy:kutils:2.1'

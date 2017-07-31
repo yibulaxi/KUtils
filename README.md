@@ -522,7 +522,44 @@ public class User{
     }
 ```
 ##### 业务操作部分代码。其他请自行百度或查看demo
-
+```Java
+//添加一条数据
+String userName = Utils.getRandomName(1);
+                int age = new Random().nextInt(30);
+                User user = new User();
+                user.setName(userName);
+                user.setAge(age);
+                userDao.insert(user);
+                apped("已成功插入一条(name = " + userName + ",age = " + age + ")的数据");
+//删除全部数据
+//                //删除一般配和查询完成
+//                QueryBuilder<User> userQueryBuilder = userDao.queryBuilder();
+//                List<User> userList = userQueryBuilder.where(UserDao.Properties.Name.eq("志文")).list();
+//                User u = (userList != null && userList.size() > 0) ? userList.get(0) : null;
+//                if (u == null) {
+//                    apped("当前要删除的用户不存在");
+//                    return;
+//                }
+//                userDao.delete(u);
+//                apped("删除成功");
+                userDao.deleteAll();
+                apped("已删除全部数据");
+//修改
+ QueryBuilder<User> userQueryBuilder = userDao.queryBuilder();
+                List<User> userList = userQueryBuilder.where(UserDao.Properties.Name.eq("志强")).list();
+                if (userList != null && userList.size() > 0) {
+                    userList.get(0).setName("张三");
+                    userDao.update(userList.get(0));
+                    apped("已将姓名为志强的数据修改姓名为张三");
+                } else {
+                    apped("要修改的数据不存在");
+                }
+//查询
+ apped("当前User表中所有的数据：");
+                for (int i = 0; i < userDao.loadAll().size(); i++) {
+                    apped(userDao.loadAll().get(i).toString());
+                }
+```
 
 
 

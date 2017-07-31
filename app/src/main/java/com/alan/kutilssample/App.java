@@ -6,9 +6,13 @@ import com.alan.kutilssample.bean.IsFirstEnterApp;
 import com.alan.kutilssample.greendao.DaoMaster;
 import com.alan.kutilssample.greendao.DaoSession;
 import com.zwy.kutils.KUtilLibs;
+import com.zwy.kutils.http.HttpBuild;
 import com.zwy.kutils.utils.Log;
 
 import org.greenrobot.greendao.database.Database;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * ================================================================
@@ -27,17 +31,17 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
         //初始化KUtils
-        KUtilLibs.getInstance().init(true, TAG, getApplicationContext());
+        KUtilLibs.init(true, TAG, this, new HttpBuild.Build(null, 10, HttpBuild.CookieType.MemoryCookieStore));
         //初始化GreenDao
         initGreenDao();
         initAppInfos();
     }
 
     private void initAppInfos() {
-        IsFirstEnterApp isFirstEnterApp =new IsFirstEnterApp();
+        IsFirstEnterApp isFirstEnterApp = new IsFirstEnterApp();
         isFirstEnterApp.setId(0l);
         isFirstEnterApp.setIsFirstEnterApp(true);
-        if (mDaoSession.getIsFirstEnterAppDao().load(0l)==null){
+        if (mDaoSession.getIsFirstEnterAppDao().load(0l) == null) {
             mDaoSession.getIsFirstEnterAppDao().insert(isFirstEnterApp);
         }
     }

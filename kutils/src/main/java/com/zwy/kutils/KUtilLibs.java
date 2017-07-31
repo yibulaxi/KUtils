@@ -1,11 +1,23 @@
 package com.zwy.kutils;
 
+import android.app.Application;
 import android.content.Context;
-import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
 
+import com.lzy.okgo.OkGo;
+import com.lzy.okgo.cookie.CookieJarImpl;
+import com.lzy.okgo.cookie.store.DBCookieStore;
+import com.lzy.okgo.cookie.store.MemoryCookieStore;
+import com.lzy.okgo.cookie.store.SPCookieStore;
+import com.lzy.okgo.interceptor.HttpLoggingInterceptor;
+import com.zwy.kutils.http.HttpBuild;
 import com.zwy.kutils.utils.Log;
 import com.zwy.kutils.widget.loadingdialog.DialogUIUtils;
+
+import java.util.concurrent.TimeUnit;
+
+import okhttp3.CookieJar;
+import okhttp3.OkHttpClient;
 
 /**
  * ================================================================
@@ -17,11 +29,22 @@ import com.zwy.kutils.widget.loadingdialog.DialogUIUtils;
  */
 public class KUtilLibs {
     private static String TAG_ = "KUtilLibs";
-    private static KUtilLibs mKUtilLibs;
-    private Context appContext;
+    private static Context appContext;
 
-    public static KUtilLibs getInstance() {
-        return mKUtilLibs == null ? new KUtilLibs() : mKUtilLibs;
+    /**
+     * 初始化库
+     *
+     * @param isDebug 是否打印日志
+     * @param TAG     日志TAG
+     * @param context application
+     */
+    public static void init(@NonNull boolean isDebug, @NonNull String TAG, @NonNull Application context) {
+        android.util.Log.d(TAG_, "==============您使用的KUtils版本:2.3==============");
+        if (TAG == null || context == null) throw new RuntimeException("KUtilLibs 初始化参数均不能为空");
+        appContext = context.getApplicationContext();
+        if (isDebug) Log.init(TAG, true);//开启日志打印
+        DialogUIUtils.init(appContext);
+        OkGo.getInstance().init(context);
     }
 
     /**
@@ -31,12 +54,39 @@ public class KUtilLibs {
      * @param TAG     日志TAG
      * @param context application
      */
-    public KUtilLibs init(@NonNull boolean isDebug, @NonNull String TAG, @NonNull Context context) {
+    public static void init(@NonNull boolean isDebug, @NonNull String TAG, @NonNull Application context, HttpBuild.Build httpBuild) {
         android.util.Log.d(TAG_, "==============您使用的KUtils版本:2.3==============");
         if (TAG == null || context == null) throw new RuntimeException("KUtilLibs 初始化参数均不能为空");
-        this.appContext = context;
+        appContext = context.getApplicationContext();
         if (isDebug) Log.init(TAG, true);//开启日志打印
         DialogUIUtils.init(appContext);
-        return mKUtilLibs;
+
+        OkHttpClient.Builder builder = new OkHttpClient.Builder();
+        if (HttpBuild.httpInterceptor != null) {
+            builder.addInterceptor(HttpBuild.httpInterceptor);
+        } else {
+            builder.addInterceptor(new HttpLoggingInterceptor(TAG_));
+        }
+
+        builder.connectTimeout(HttpBuild.timeOut, TimeUnit.SECONDS);
+        builder.readTimeout(HttpBuild.timeOut, TimeUnit.SECONDS);
+        builder.writeTimeout(HttpBuild.timeOut, TimeUnit.SECONDS);
+        CookieJar cookieJar = null;
+        switch (HttpBuild.cookieStore) {
+            case SPCookieStore:
+                cookieJar = new CookieJarImpl(new SPCookieStore(appContext));
+                break;
+            case DBCookieStore:
+                cookieJar = new CookieJarImpl(new DBCookieStore(appContext));
+                break;
+            case MemoryCookieStore:
+                cookieJar = new CookieJarImpl(new MemoryCookieStore());
+                break;
+        }
+        if (cookieJar != null)
+            builder.cookieJar(cookieJar);
+        OkGo.getInstance().init(context).setOkHttpClient(builder.build());
     }
+
+    //日志拦截器封装  全局超时时间  cookie持久化   Https配置
 }

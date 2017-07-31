@@ -9,7 +9,6 @@ README
 ****
 ```diff
 即将更新
-- V2.3:将增加OkGo使用代码。
 - V2.4:将增加部分常用自定义View。
 ```
 ## 目录
@@ -20,6 +19,7 @@ README
 * [圆角图片及图片加载](#圆角图片及图片加载)
 * [数据库操作](#数据库操作)
 * [万能适配器](#万能适配器)
+* [OkGo网络请求](#OkGo网络请求)
 * [集成该库](#集成该库)
 
 
@@ -689,6 +689,29 @@ String userName = Utils.getRandomName(1);
 ```
 #### 效果图  
 ![circleimageview](https://github.com/devzwy/KUtils/raw/master/images/adapter.gif)  
+
+
+
+## OkGo网络请求
+---------------
+##### 发起一个简单的网络请求
+```Java
+ //发起一个简单的网络请求
+        OkGo.<String>post("").tag("").params("key", "v").execute(new AbsCallback<String>() {
+            @Override
+            public void onSuccess(Response<String> response) {
+
+            }
+
+            @Override
+            public String convertResponse(okhttp3.Response response) throws Throwable {
+                return null;
+            }
+        });
+```
+##### [详细文档请点击这里](https://github.com/jeasonlzy/okhttp-OkGo/wiki "OkGo")
+
+
 ## 集成该库
 -----------
 

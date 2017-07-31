@@ -54,6 +54,8 @@ dependencies {
     compile 'com.lzy.net:okrx:+'
     //版本号使用 + 可以自动引用最新版
     compile 'com.lzy.net:okserver:+'
+
+    compile 'com.google.code.gson:gson:2.7'
 }
 
 def siteUrl = 'https://github.com/devzwy/KUtils'      // 项目的主页

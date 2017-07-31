@@ -14,6 +14,9 @@ import com.alan.kutilssample.greendao.IsFirstEnterAppDao;
 import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
+import com.lzy.okgo.OkGo;
+import com.lzy.okgo.callback.AbsCallback;
+import com.lzy.okgo.model.Response;
 import com.zwy.kutils.utils.Log;
 import com.zwy.kutils.widget.baseview.BaseActivity;
 import com.zwy.kutils.widget.customview.circleimageview.CircleImageView;
@@ -170,6 +173,18 @@ public class MainActivity extends BaseActivity {
         mAdapter.isFirstOnly(false);//是否仅在第一次加载列表时展示动画
         mRv.setLayoutManager(new LinearLayoutManager(mContext));
         mRv.setAdapter(mAdapter);
+        //发起一个简单的网络请求
+        OkGo.<String>post("").tag("").params("key", "v").execute(new AbsCallback<String>() {
+            @Override
+            public void onSuccess(Response<String> response) {
+
+            }
+
+            @Override
+            public String convertResponse(okhttp3.Response response) throws Throwable {
+                return null;
+            }
+        });
     }
 
     /**

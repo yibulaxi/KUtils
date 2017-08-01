@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.alan.kutilssample.bean.IsFirstEnterApp;
 import com.alan.kutilssample.bean.TitleModel;
+import com.alan.kutilssample.eventbus.Aty_1;
 import com.alan.kutilssample.greendao.IsFirstEnterAppDao;
 import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -17,6 +18,9 @@ import com.chad.library.adapter.base.BaseViewHolder;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.AbsCallback;
 import com.lzy.okgo.model.Response;
+import com.zwy.kutils.eventbus.EventBus;
+import com.zwy.kutils.eventbus.Subscribe;
+import com.zwy.kutils.eventbus.ThreadMode;
 import com.zwy.kutils.utils.Log;
 import com.zwy.kutils.widget.baseview.BaseActivity;
 import com.zwy.kutils.widget.customview.circleimageview.CircleImageView;
@@ -49,6 +53,16 @@ public class MainActivity extends BaseActivity {
     @Override
     protected int isTranslucentStatus() {
         return 0;
+    }
+
+    /**
+     * 是否需要注册eventBus
+     *
+     * @return 需要时返回true 页面销毁时会自动注销 子类无需重复注销
+     */
+    @Override
+    protected boolean isNeedEventBus() {
+        return true;
     }
 
     /**
@@ -124,6 +138,11 @@ public class MainActivity extends BaseActivity {
         switch (position) {
             case 0:
                 readyGo(GreenDaoAty.class);
+                break;
+            case 1:
+                //跳转前发出粘性事件
+//                EventBus.getDefault().postSticky("我是从主页传过来的字符串");
+                readyGo(Aty_1.class);
                 break;
         }
     }
@@ -212,7 +231,7 @@ public class MainActivity extends BaseActivity {
                                 mSw.setRefreshing(false);
                                 List<TitleModel> list = new ArrayList<>();
                                 list.add(new TitleModel("GreenDao使用", true));
-                                list.add(new TitleModel("功能2", false));
+                                list.add(new TitleModel("EventBus使用", true));
                                 list.add(new TitleModel("功能3", false));
                                 list.add(new TitleModel("...", false));
                                 mAdapter.setNewData(list);//添加集合数据
@@ -275,6 +294,12 @@ public class MainActivity extends BaseActivity {
             helper.setText(R.id.title, item.getTitle());
             helper.addOnClickListener(R.id.clicktestview);//给子view添加点击事件
         }
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void event(String msg) {
+        Log.d("收到第二个页面传入的参数：" + msg);
+        mTvActionbar.setText(msg);
     }
 
 }

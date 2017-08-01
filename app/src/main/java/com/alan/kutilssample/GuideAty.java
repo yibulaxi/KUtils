@@ -42,6 +42,16 @@ public class GuideAty extends MyBaseActivity {
     }
 
     /**
+     * 是否需要注册eventBus
+     *
+     * @return 需要时返回true 页面销毁时会自动注销 子类无需重复注销
+     */
+    @Override
+    protected boolean isNeedEventBus() {
+        return false;
+    }
+
+    /**
      * 设置布局ID
      *
      * @return 资源文件ID

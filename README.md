@@ -20,6 +20,7 @@ README
 * [数据库操作](#数据库操作)
 * [万能适配器](#万能适配器)
 * [网络请求](#网络请求)
+* [事件分发](#事件分发)
 * [集成该库](#集成该库)
 
 
@@ -700,6 +701,81 @@ String userName = Utils.getRandomName(1);
         });
 ```
 ##### [详细文档请点击这里](https://github.com/jeasonlzy/okhttp-OkGo/wiki "OkGo")
+
+
+## 事件分发
+------------------------  
+##### 根据EventBus3.0源码拓展而来,实现post事件和接收事件时可以通过tag进行筛选,比如EventBus.getDefault().post("内容","tag1");发出的事件只有@Subscribe(threadMode=ThreadMode.MAIN,tag="tag1")这样的形式接收才能收到，如果在发送时未指定tag，那么接收时也不要使用tag，相反的，如果发送时用了tag，而接收时未使用tag，也是收不到的。粘性事件保持与EventBus3.0一样的机制，未加入tag
+##### 使用方式和官方保持一致
+#### 注册
+```Java
+EventBus.getDefault().register(mContext);
+```
+#### 注销
+```Java
+ EventBus.getDefault().unregister(mContext);
+```
+#### 发出一般事件
+```Java
+EventBus.getDefault().post("我是事件内容1");//未指定tag，接收时也不要写入tag
+EventBus.getDefault().post("我是事件内容2","tag1");//指定tag，只有接收时指定了该tag才能收到事件
+```
+#### 接收一般事件
+```Java
+ @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEvent(String msg){
+        // TODO: 2017/8/1 我能接收到 "我是事件内容1"
+    }
+ @Subscribe(threadMode = ThreadMode.MAIN,tag = "tag1")
+    public void onEvent(String msg){
+        // TODO: 2017/8/1 我能接收到 "我是事件内容2"
+    }
+```
+#### 发出粘性事件
+```Java
+EventBus.getDefault().postSticky("我是粘性事件");
+```
+#### 接收粘性事件
+
+```Java
+@Subscribe(threadMode = ThreadMode.MAIN,sticky = true)
+    public void onEvent(String msg){
+        // TODO: 2017/8/1 我能接收到粘性事件
+    }
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ## 集成该库

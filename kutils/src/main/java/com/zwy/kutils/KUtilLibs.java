@@ -14,6 +14,7 @@ import com.zwy.kutils.http.HttpBuild;
 import com.zwy.kutils.utils.Log;
 import com.zwy.kutils.widget.loadingdialog.DialogUIUtils;
 
+
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 
@@ -40,7 +41,7 @@ public class KUtilLibs {
      * @param context application
      */
     public static void init(@NonNull boolean isDebug, @NonNull String TAG, @NonNull Application context) {
-        android.util.Log.d(TAG_, "==============您使用的KUtils版本:2.3.2==============");
+        android.util.Log.d(TAG_, "==============您使用的KUtils版本:2.4==============");
         if (TAG == null || context == null) throw new RuntimeException("KUtilLibs 初始化参数均不能为空");
         appContext = context.getApplicationContext();
         if (isDebug) Log.init(TAG, true);//开启日志打印
@@ -56,7 +57,7 @@ public class KUtilLibs {
      * @param context application
      */
     public static void init(@NonNull boolean isDebug, @NonNull String TAG, @NonNull Application context, HttpBuild.Build httpBuild) {
-        android.util.Log.d(TAG_, "==============您使用的KUtils版本:2.3.2==============");
+        android.util.Log.d(TAG_, "==============您使用的KUtils版本:2.4==============");
         if (TAG == null || context == null) throw new RuntimeException("KUtilLibs 初始化参数均不能为空");
         appContext = context.getApplicationContext();
         if (isDebug) Log.init(TAG, true);//开启日志打印
@@ -95,5 +96,4 @@ public class KUtilLibs {
         OkGo.getInstance().init(context).setOkHttpClient(builder.build());
     }
 
-    //日志拦截器封装  全局超时时间  cookie持久化   Https配置
 }

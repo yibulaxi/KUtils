@@ -11,8 +11,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.zwy.kutils.eventbus.EventBus;
 import com.zwy.kutils.utils.AppManager;
 import com.zwy.kutils.widget.loadingdialog.DialogUIUtils;
+
 
 import butterknife.ButterKnife;
 
@@ -31,7 +33,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (isTranslucentStatus()!=0) {
+        if (isTranslucentStatus() != 0) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
                 setTranslucentStatus(true);
                 SystemBarTintManager tintManager = new SystemBarTintManager(this);
@@ -48,6 +50,10 @@ public abstract class BaseActivity extends AppCompatActivity {
         setContentView(getLayoutId());
         ButterKnife.bind(this);
         AppManager.getAppManager().addActivity(this);
+        if (isNeedEventBus()) {
+            EventBus.getDefault().register(mContext);
+            android.util.Log.d("BaseActivity", "EventBus注册成功");
+        }
         initView(savedInstanceState);
         initData();
     }
@@ -57,8 +63,17 @@ public abstract class BaseActivity extends AppCompatActivity {
      *
      * @return StatusBarTintModle(boolean isTranslucentStatus, int color);
      */
-    protected abstract @ColorRes int isTranslucentStatus();
+    protected abstract
+    @ColorRes
+    int isTranslucentStatus();
 
+
+    /**
+     * 是否需要注册eventBus
+     *
+     * @return 需要时返回true 页面销毁时会自动注销 子类无需重复注销
+     */
+    protected abstract boolean isNeedEventBus();
 
     /**
      * 设置布局ID
@@ -110,6 +125,10 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        if (isNeedEventBus()){
+            EventBus.getDefault().unregister(mContext);
+            android.util.Log.d("BaseActivity", "EventBus已注销");
+        }
         ButterKnife.unbind(this);
         AppManager.getAppManager().finishActivity(this);
     }

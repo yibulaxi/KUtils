@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
+import com.alan.kutilssample.animation.AnimationAty;
 import com.alan.kutilssample.bean.IsFirstEnterApp;
 import com.alan.kutilssample.bean.TitleModel;
 import com.alan.kutilssample.eventbus.Aty_1;
@@ -18,7 +19,6 @@ import com.chad.library.adapter.base.BaseViewHolder;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.AbsCallback;
 import com.lzy.okgo.model.Response;
-import com.zwy.kutils.eventbus.EventBus;
 import com.zwy.kutils.eventbus.Subscribe;
 import com.zwy.kutils.eventbus.ThreadMode;
 import com.zwy.kutils.utils.Log;
@@ -144,6 +144,9 @@ public class MainActivity extends BaseActivity {
 //                EventBus.getDefault().postSticky("我是从主页传过来的字符串");
                 readyGo(Aty_1.class);
                 break;
+            case 2:
+                readyGo(AnimationAty.class);
+                break;
         }
     }
 
@@ -232,7 +235,7 @@ public class MainActivity extends BaseActivity {
                                 List<TitleModel> list = new ArrayList<>();
                                 list.add(new TitleModel("GreenDao使用", true));
                                 list.add(new TitleModel("EventBus使用", true));
-                                list.add(new TitleModel("功能3", false));
+                                list.add(new TitleModel("Anination使用", true));
                                 list.add(new TitleModel("...", false));
                                 mAdapter.setNewData(list);//添加集合数据
                                 return;

@@ -25,6 +25,7 @@
         </activity>
         <activity android:name=".GreenDaoAty"/>
         <activity android:name=".eventbus.Aty_1"/>
+        <activity android:name=".animation.AnimationAty"/>
     </application>
 
 </manifest>

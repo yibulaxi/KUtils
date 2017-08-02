@@ -23,7 +23,7 @@ README
 * [网络请求](#网络请求)
 * [事件分发](#事件分发)
 * [动画集成](#动画集成)
-* [仿iOS隐藏输入框](#仿iOS隐藏输入框)
+* [自动隐藏输入框](#自动隐藏输入框)
 * [集成该库](#集成该库)
 
 
@@ -793,7 +793,7 @@ YoYo.with(Techniques.Tada)
 ![animation](https://github.com/devzwy/KUtils/raw/master/images/animation.gif)  
 
 
-## 仿iOS隐藏输入框
+## 自动隐藏输入框
 ------------------
 #### 进入activity后调用即可
 ```Java

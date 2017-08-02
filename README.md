@@ -22,6 +22,7 @@ README
 * [万能适配器](#万能适配器)
 * [网络请求](#网络请求)
 * [事件分发](#事件分发)
+* [一行代码集成动画](#动画集成)
 * [集成该库](#集成该库)
 
 
@@ -745,8 +746,50 @@ EventBus.getDefault().postSticky("我是粘性事件");
     }
 ```
 
+## 动画集成
+-------------
+### 使用
+```java
+YoYo.with(Techniques.Tada)
+    .duration(700)
+    .repeat(5)
+    .playOn(findViewById(R.id.edit_area));
+```
+### 效果
+#### Attension
+`Flash`, `Pulse`, `RubberBand`, `Shake`, `Swing`, `Wobble`, `Bounce`, `Tada`, `StandUp`, `Wave`
 
+#### Special
+`Hinge`, `RollIn`, `RollOut`,`Landing`,`TakingOff`,`DropOut`
 
+#### Bounce
+`BounceIn`, `BounceInDown`, `BounceInLeft`, `BounceInRight`, `BounceInUp`
+
+#### Fade
+`FadeIn`, `FadeInUp`, `FadeInDown`, `FadeInLeft`, `FadeInRight`
+
+`FadeOut`, `FadeOutDown`, `FadeOutLeft`, `FadeOutRight`, `FadeOutUp`
+
+#### Flip
+`FlipInX`, `FlipOutX`, `FlipOutY`
+
+#### Rotate
+`RotateIn`, `RotateInDownLeft`, `RotateInDownRight`, `RotateInUpLeft`, `RotateInUpRight`
+
+`RotateOut`, `RotateOutDownLeft`, `RotateOutDownRight`, `RotateOutUpLeft`, `RotateOutUpRight`
+
+#### Slide
+`SlideInLeft`, `SlideInRight`, `SlideInUp`, `SlideInDown`
+
+`SlideOutLeft`, `SlideOutRight`, `SlideOutUp`, `SlideOutDown`
+
+#### Zoom
+`ZoomIn`, `ZoomInDown`, `ZoomInLeft`, `ZoomInRight`, `ZoomInUp`
+
+`ZoomOut`, `ZoomOutDown`, `ZoomOutLeft`, `ZoomOutRight`, `ZoomOutUp`
+
+### 效果图  
+![animation](https://github.com/devzwy/KUtils/raw/master/images/animation.gif)  
 
 
 
@@ -826,11 +869,11 @@ compile(name: 'kutils-release', ext: 'aar')
 #### 无论采用哪种形式，都需要在application中初始化操作（注意：在使用库之前必须在application中执行如下代码。不初始化直接调用Log输出日志会有空指针异常抛出）
               
 ```Java
-                    @Override
-                      public void onCreate() {
-                          super.onCreate();
-                           KUtilLibs.init(true, TAG, this, new HttpBuild.Build(null, 10, HttpBuild.CookieType.MemoryCookieStore));
-                      }
+    @Override
+      public void onCreate() {
+          super.onCreate();
+           KUtilLibs.init(true, TAG, this, new HttpBuild.Build(null, 10, HttpBuild.CookieType.MemoryCookieStore));
+      }
 ```
 ****
 集成过程出现问题可联系本人QQ：3648415(注明来自github)

@@ -42,7 +42,7 @@ public class KUtilLibs {
      * @param context application
      */
     public static void init(@NonNull boolean isDebug, @NonNull String TAG, @NonNull Application context) {
-        android.util.Log.d(TAG_, "==============您使用的KUtils版本:2.4.1==============");
+        android.util.Log.d(TAG_, "==============您使用的KUtils版本:2.4.2==============");
         if (TAG == null || context == null) throw new RuntimeException("KUtilLibs 初始化参数均不能为空");
         appContext = context.getApplicationContext();
         if (isDebug) Log.init(TAG, true);//开启日志打印
@@ -58,7 +58,7 @@ public class KUtilLibs {
      * @param context application
      */
     public static void init(@NonNull boolean isDebug, @NonNull String TAG, @NonNull Application context, HttpBuild.Build httpBuild) {
-        android.util.Log.d(TAG_, "==============您使用的KUtils版本:2.4.1==============");
+        android.util.Log.d(TAG_, "==============您使用的KUtils版本:2.4.2==============");
         if (TAG == null || context == null) throw new RuntimeException("KUtilLibs 初始化参数均不能为空");
         appContext = context.getApplicationContext();
         if (isDebug) Log.init(TAG, true);//开启日志打印

@@ -13,12 +13,10 @@ import com.alan.kutilssample.bean.IsFirstEnterApp;
 import com.alan.kutilssample.bean.TitleModel;
 import com.alan.kutilssample.eventbus.Aty_1;
 import com.alan.kutilssample.greendao.IsFirstEnterAppDao;
+import com.alan.kutilssample.http.HttpAty;
 import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
-import com.lzy.okgo.OkGo;
-import com.lzy.okgo.callback.AbsCallback;
-import com.lzy.okgo.model.Response;
 import com.zwy.kutils.eventbus.Subscribe;
 import com.zwy.kutils.eventbus.ThreadMode;
 import com.zwy.kutils.utils.Log;
@@ -147,6 +145,9 @@ public class MainActivity extends BaseActivity {
             case 2:
                 readyGo(AnimationAty.class);
                 break;
+            case 3:
+                readyGo(HttpAty.class);
+                break;
         }
     }
 
@@ -195,18 +196,6 @@ public class MainActivity extends BaseActivity {
         mAdapter.isFirstOnly(false);//是否仅在第一次加载列表时展示动画
         mRv.setLayoutManager(new LinearLayoutManager(mContext));
         mRv.setAdapter(mAdapter);
-        //发起一个简单的网络请求
-        OkGo.<String>post("http://www.baidu.com").tag("111111").params("key", "v").execute(new AbsCallback<String>() {
-            @Override
-            public void onSuccess(Response<String> response) {
-
-            }
-
-            @Override
-            public String convertResponse(okhttp3.Response response) throws Throwable {
-                return null;
-            }
-        });
     }
 
     /**
@@ -236,6 +225,7 @@ public class MainActivity extends BaseActivity {
                                 list.add(new TitleModel("GreenDao使用", true));
                                 list.add(new TitleModel("EventBus使用", true));
                                 list.add(new TitleModel("Anination使用", true));
+                                list.add(new TitleModel("OkGo网络请求使用", true));
                                 list.add(new TitleModel("...", false));
                                 mAdapter.setNewData(list);//添加集合数据
                                 return;

@@ -23,7 +23,7 @@ README
  //打包时跳过检测过期的Api以及系统自检的错误代码
  
     aaptOptions {
-        cruncherEnabled = false
+        cruncherEnabled = false 
         useNewCruncher = false
     }
     

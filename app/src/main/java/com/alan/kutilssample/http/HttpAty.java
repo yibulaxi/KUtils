@@ -2,21 +2,23 @@ package com.alan.kutilssample.http;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import com.alan.kutilssample.MyBaseActivity;
 import com.alan.kutilssample.R;
 import com.alan.kutilssample.http.bean.GithubModle;
 import com.google.gson.Gson;
 import com.lzy.okgo.OkGo;
-import com.lzy.okgo.cache.CacheMode;
-import com.lzy.okgo.callback.AbsCallback;
 import com.lzy.okgo.callback.Callback;
 import com.lzy.okgo.model.Progress;
 import com.lzy.okgo.model.Response;
 import com.lzy.okgo.request.base.Request;
+import com.zwy.kutils.widget.customview.circleimageview.CircleImageView;
 
-import java.io.File;
 import java.io.IOException;
+
+import butterknife.Bind;
+import butterknife.ButterKnife;
 
 /**
  * ================================================================
@@ -29,6 +31,10 @@ import java.io.IOException;
 public class HttpAty extends MyBaseActivity {
     private final String URL_Array = "https://api.github.com/orgs/octokit/repos";
     private final String URL_Object = "https://api.github.com/repos/octokit/octokit.rb";
+    @Bind(R.id.tv_actionbar)
+    TextView mTvActionbar;
+    @Bind(R.id.cv)
+    CircleImageView mCv;
 
     /**
      * 自己进行相关逻辑拓展
@@ -75,7 +81,7 @@ public class HttpAty extends MyBaseActivity {
      */
     @Override
     protected void initView(Bundle savedInstanceState) {
-
+        mTvActionbar.setText("网络请求测试");
     }
 
     /**
@@ -174,5 +180,12 @@ public class HttpAty extends MyBaseActivity {
 //        OkGo.getInstance().cancelAll();//取消全部请求
 //        OkGo.getInstance().cancelTag("tag");//根据tag取消请求
 
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // TODO: add setContentView(...) invocation
+        ButterKnife.bind(this);
     }
 }

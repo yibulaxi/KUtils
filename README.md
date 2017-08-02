@@ -2,7 +2,7 @@ README
 ===========================
 封装android开发中常用的Utils,也许你的项目只需要这一个库就完全够了。不信你看，有图有真相。集成优雅的日志打印风格、app引导页面两行代码实现(也可用作轮播广告图，支持加载本地和网络,一键开启自动翻页功能，内设好几种翻页动画)、高仿iOS进度条和对话框、activity基类的封装(可继承自BaseActivity自行拓展)、常用自定义View(圆角头像等)、Glide一行代码加载图片、万能的RecycleView适配器(一行代码添加脚布局头布局，支持多级展开页面，内部已优化，支持多种列表动画效果，支持上啦加载下拉刷新等)、数据库操作GreenDao的使用案例、网络请求OkGo的二次封装(一行代码发起请求，支持缓存，文件上传下载进度监听，自定义session机制等等)、可直接依赖使用，喜欢的话不妨star一下吧。
  
-[![](https://img.shields.io/badge/license-Apache%202-green.svg)](https://www.apache.org/licenses/LICENSE-2.0)   [ ![Download](https://api.bintray.com/packages/devzwy/maven/KUtils/images/download.svg?version=2.4.1) ](https://bintray.com/devzwy/maven/KUtils/2.4/link) 
+[![](https://img.shields.io/badge/license-Apache%202-green.svg)](https://www.apache.org/licenses/LICENSE-2.0)   [ ![Download](https://api.bintray.com/packages/devzwy/maven/KUtils/images/download.svg) ](https://bintray.com/devzwy/maven/KUtils/_latestVersion)
 [![](https://img.shields.io/badge/%E4%BD%9C%E8%80%85-赵文贇-orange.svg)](https://github.com/devzwy) [![](https://img.shields.io/badge/KUtils-2.4.1-brightgreen.svg)](https://github.com/devzwy/KUtils) [![](https://img.shields.io/badge/QQ-3648415-brightgreen.svg)](https://github.com/devzwy/KUtils) [![](https://img.shields.io/badge/微信-pidan688-brightgreen.svg)](https://github.com/devzwy/KUtils) [![](https://img.shields.io/badge/Mail-dev_zwy@aliyun.com-green.svg)](https://github.com/devzwy/KUtils)
 ****
 ### Author:赵文贇

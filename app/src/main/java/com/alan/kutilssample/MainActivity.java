@@ -1,7 +1,9 @@
 package com.alan.kutilssample;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -30,7 +32,7 @@ import java.util.Random;
 import butterknife.Bind;
 
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends MyBaseActivity {
     @Bind(R.id.tv_actionbar)
     TextView mTvActionbar;
     @Bind(R.id.cv)
@@ -91,6 +93,13 @@ public class MainActivity extends BaseActivity {
         mCv.setVisibility(View.VISIBLE);
         initAdapter();
         setListener();
+        Snackbar.make(mRv, "SnackbarClicked", Snackbar.LENGTH_LONG).setAction("Action", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showToast("I'm a toast");
+            }
+        }).setActionTextColor(Color.RED).show();
+
     }
 
     private void setListener() {
@@ -163,7 +172,7 @@ public class MainActivity extends BaseActivity {
                         public void run() {
                             Random random = new Random();
                             int a = random.nextInt(3);
-                            Log.d("nextInt = " + a);
+//                            Log.d("nextInt = " + a);
                             if (a == 0) {
                                 Log.d("nextInt = " + a);
                                 for (int i = 0; i < 5; i++) {
@@ -267,6 +276,14 @@ public class MainActivity extends BaseActivity {
         Log.d(text);
         Log.e(text);
         Log.w(text);
+    }
+
+    /**
+     * 自己进行相关逻辑拓展
+     */
+    @Override
+    protected void test() {
+
     }
 
 

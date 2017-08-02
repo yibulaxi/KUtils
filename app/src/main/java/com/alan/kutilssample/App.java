@@ -23,7 +23,7 @@ import java.util.Map;
  * ================================================================
  */
 public class App extends Application {
-    public final String TAG = "KUtilsSample";
+    public final String TAG = "KUtils测试Demo";
     private static DaoSession mDaoSession;
     private final String DBNAME = "kutils_db";
 

@@ -8,11 +8,14 @@ import com.alan.kutilssample.R;
 import com.alan.kutilssample.http.bean.GithubModle;
 import com.google.gson.Gson;
 import com.lzy.okgo.OkGo;
+import com.lzy.okgo.cache.CacheMode;
+import com.lzy.okgo.callback.AbsCallback;
 import com.lzy.okgo.callback.Callback;
 import com.lzy.okgo.model.Progress;
 import com.lzy.okgo.model.Response;
 import com.lzy.okgo.request.base.Request;
 
+import java.io.File;
 import java.io.IOException;
 
 /**
@@ -106,11 +109,11 @@ public class HttpAty extends MyBaseActivity {
 //                showToast(response.body());
                 GithubModle githubModle = null;
                 try {
-                    githubModle = new Gson().fromJson(response.getRawResponse().body().string(),GithubModle.class);
+                    githubModle = new Gson().fromJson(response.getRawResponse().body().string(), GithubModle.class);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                showToast("数据解析成功：\n"+githubModle.toString());
+                showToast("数据解析成功：\n" + githubModle.toString());
 
             }
 
@@ -144,5 +147,32 @@ public class HttpAty extends MyBaseActivity {
                 return null;
             }
         });
+//
+//        OkGo.<GithubModle>post(URL_Array)
+//                .cacheMode(CacheMode.NO_CACHE)//缓存模式
+//                .cacheKey(URL_Array)//缓存key
+//                .headers("k", "v")//自定义headers
+//                .params("k", "v")//参数
+//                .cacheTime(10000)//缓存过期时间
+//                .isMultipart(true)//是否强制表单上传
+//                .upJson("json")//上送json串
+//                .upFile(new File(""))//上送文件
+//                .upBytes(new byte[]{})//上送字节数组
+//                .tag("tag")//请求的tag，可用来取消该请求
+////                .execute()
+//                .execute(new AbsCallback<GithubModle>() {
+//                    @Override
+//                    public void onSuccess(Response<GithubModle> response) {
+//
+//                    }
+//
+//                    @Override
+//                    public GithubModle convertResponse(okhttp3.Response response) throws Throwable {
+//                        return null;
+//                    }
+//                });
+//        OkGo.getInstance().cancelAll();//取消全部请求
+//        OkGo.getInstance().cancelTag("tag");//根据tag取消请求
+
     }
 }

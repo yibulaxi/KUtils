@@ -17,6 +17,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.zwy.kutils.animations.Techniques;
 import com.zwy.kutils.animations.YoYo;
+import com.zwy.kutils.utils.HideUtil;
 import com.zwy.kutils.widget.customview.circleimageview.CircleImageView;
 import com.zwy.kutils.widget.loadingdialog.DialogUIUtils;
 
@@ -92,6 +93,7 @@ public class AnimationAty extends MyBaseActivity {
      */
     @Override
     protected void initView(Bundle savedInstanceState) {
+        HideUtil.init(this);
         mTvActionbar.setText("动画测试");
         mAdpter = new MyAdpter(null);
         mAdpter.openLoadAnimation();

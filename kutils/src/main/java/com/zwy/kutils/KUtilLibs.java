@@ -11,6 +11,7 @@ import com.lzy.okgo.cookie.store.MemoryCookieStore;
 import com.lzy.okgo.cookie.store.SPCookieStore;
 import com.lzy.okgo.interceptor.HttpLoggingInterceptor;
 import com.zwy.kutils.http.HttpBuild;
+import com.zwy.kutils.utils.HideUtil;
 import com.zwy.kutils.utils.Log;
 import com.zwy.kutils.widget.loadingdialog.DialogUIUtils;
 

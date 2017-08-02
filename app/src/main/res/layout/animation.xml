@@ -9,7 +9,8 @@
     <LinearLayout
         android:id="@+id/wrapper"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/hello_world"
@@ -21,6 +22,11 @@
             android:padding="30dp"
             android:text="Hello World"
             android:textSize="40sp"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:hint="测试仿iOS点击输入框以外的view隐藏输入框"/>
     </LinearLayout>
 
     <android.support.v7.widget.RecyclerView

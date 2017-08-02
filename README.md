@@ -11,6 +11,21 @@ README
 ```diff
 即将更新
 - V2.5:将增加常用自定义View。
+- 注：项目编译异常时请使用如下代码跳过编译时的异常检测:  
+ 
+ //打包时跳过检测过期的Api以及系统自检的错误代码
+ 
+    aaptOptions {
+        cruncherEnabled = false
+        useNewCruncher = false
+    }
+    
+    lintOptions {
+            checkReleaseBuilds false
+            // Or, if you prefer, you can continue to check for errors in release builds,
+            // but continue the build even when errors are found:
+            abortOnError false
+        }
 ```
 ## 目录
 * [日志输出](#日志输出)

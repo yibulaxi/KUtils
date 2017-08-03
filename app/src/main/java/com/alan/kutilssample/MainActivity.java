@@ -157,6 +157,10 @@ public class MainActivity extends MyBaseActivity {
             case 3:
                 readyGo(HttpAty.class);
                 break;
+//            case 4:
+//                break;
+//            case 5:
+//                break;
         }
     }
 
@@ -235,6 +239,9 @@ public class MainActivity extends MyBaseActivity {
                                 list.add(new TitleModel("EventBus使用", true));
                                 list.add(new TitleModel("Anination使用", true));
                                 list.add(new TitleModel("OkGo网络请求使用", true));
+//                                list.add(new TitleModel("viewpager+tab顶部使用", true));
+//                                list.add(new TitleModel("viewpager+tab底部使用", true));
+
                                 list.add(new TitleModel("...", false));
                                 mAdapter.setNewData(list);//添加集合数据
                                 return;

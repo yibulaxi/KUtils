@@ -59,6 +59,7 @@ dependencies {
 
 
     compile 'com.daimajia.easing:library:2.0@aar'//动画库
+    compile 'com.android.support:support-v13:22.2.1'
 }
 
 def siteUrl = 'https://github.com/devzwy/KUtils'      // 项目的主页
